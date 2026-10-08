@@ -126,6 +126,36 @@
       url: 'blog.html#aprende-semestre',
       tags: ['aprende', 'consejos', 'estudiantes', 'guia', 'consejos estudiantiles']
     },
+    {
+      titulo: 'Mitos y realidades sobre aprender a programar',
+      descripcion: 'Desmontamos las creencias falsas sobre las matemáticas y el trabajo en el mundo del desarrollo',
+      url: 'blog.html#mitos-programacion',
+      tags: ['mitos', 'programar', 'matematicas', 'soledad', 'creatividad', 'aprender']
+    },
+    {
+      titulo: 'Frontend y Backend — Dos mundos que construyen una app',
+      descripcion: 'Conoce la interacción entre el diseño visual de las interfaces y la seguridad de los servidores',
+      url: 'blog.html#frontend-backend',
+      tags: ['frontend', 'backend', 'fullstack', 'servidores', 'css', 'javascript', 'interfaz']
+    },
+    {
+      titulo: 'Cómo prepararte para tu primer año de universidad',
+      descripcion: 'Estrategias de organización del tiempo y formación de equipos de estudio para triunfar en ITSON',
+      url: 'blog.html#primer-ano-universidad',
+      tags: ['primer ano', 'universidad', 'adaptacion', 'estudio', 'habitos', 'itson']
+    },
+    {
+      titulo: 'El papel de la Inteligencia Artificial en el software',
+      descripcion: 'Descubre por qué las herramientas inteligentes impulsan la productividad sin reemplazar a los ingenieros',
+      url: 'blog.html#inteligencia-artificial',
+      tags: ['inteligencia artificial', 'ia', 'futuro', 'copiloto', 'automatizacion', 'tecnologia']
+    },
+    {
+      titulo: 'De estudiante a profesional — Construye tu portafolio',
+      descripcion: 'Aprende a transformar tus proyectos escolares en una carta de presentación que atraiga a reclutadores',
+      url: 'blog.html#construir-portafolio',
+      tags: ['portafolio', 'empleo', 'github', 'linkedin', 'proyectos', 'profesional']
+    },
 
     /* Contacto */
     {

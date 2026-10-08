@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -133,6 +133,8 @@
             <li><a href="blog.html#itson-carrera">ITSON y la carrera</a></li>
             <li><a href="blog.html#como-nace-app">Cómo nace una app</a></li>
             <li><a href="blog.html#aprende-semestre">Aprende semestre a semestre</a></li>
+            <li><a href="blog.html#mitos-programacion">Mitos de programar</a></li>
+            <li><a href="blog.html#inteligencia-artificial">Inteligencia Artificial</a></li>
           </ul>
         </li>
 
@@ -204,35 +206,188 @@
             <p class="subtitulo-seccion">Bitácora de publicaciones</p>
             <h1 class="titulo-seccion">Artículos del blog</h1>
             <p class="intro-texto">
-              Explora nuestras entradas completas redactadas por estudiantes universitarios para orientarte en tu camino hacia el desarrollo de software.
+              Explora nuestras entradas redactadas por estudiantes universitarios para orientarte en tu camino hacia el desarrollo de software.
             </p>
           </div>
         </section>
 
-        <!-- ARTÍCULOS COMPLETOS CON CONTENIDO RICO -->
-        <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 1.5rem;">
+        <!-- VISTA 1: LISTA DE PREVIEWS (TARJETAS) -->
+        <div id="vista-lista-articulos">
+          <div class="blog-grid-previews">
 
-          <!-- ARTÍCULO 1 -->
-          <article class="reveal" id="itson-carrera" style="background: #FFF; border: 1px solid var(--lila-claro); border-radius: var(--radio-grande); padding: 2.2rem; box-shadow: var(--sombra-card);">
+            <!-- PREVIEW 1 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Vida Universitaria — ITSON</span>
+                  <span class="preview-fecha">8 de octubre de 2026</span>
+                  <span class="preview-lectura">4 min</span>
+                </div>
+                <h2 class="preview-titulo">Por qué estudiar Ingeniería en Software en ITSON</h2>
+                <p class="preview-resumen">
+                  Descubre las ventajas de formarte en una universidad con laboratorios especializados, proyectos reales con la comunidad y excelentes oportunidades laborales.
+                </p>
+              </div>
+              <a href="#itson-carrera" class="btn-leer-articulo" aria-label="Leer artículo Por qué estudiar Ingeniería en Software en ITSON">
+                Leer artículo completo →
+              </a>
+            </article>
+
+            <!-- PREVIEW 2 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Procesos de Desarrollo</span>
+                  <span class="preview-fecha">5 de octubre de 2026</span>
+                  <span class="preview-lectura">5 min</span>
+                </div>
+                <h2 class="preview-titulo">Cómo nace una aplicación de software</h2>
+                <p class="preview-resumen">
+                  El fascinante viaje que recorre una idea desde la detección de una necesidad cotidiana hasta que se convierte en una herramienta funcional en tu teléfono.
+                </p>
+              </div>
+              <a href="#como-nace-app" class="btn-leer-articulo" aria-label="Leer artículo Cómo nace una aplicación de software">
+                Leer artículo completo →
+              </a>
+            </article>
+
+            <!-- PREVIEW 3 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Consejos Estudiantiles</span>
+                  <span class="preview-fecha">1 de octubre de 2026</span>
+                  <span class="preview-lectura">4 min</span>
+                </div>
+                <h2 class="preview-titulo">Aprende semestre a semestre en ITSON</h2>
+                <p class="preview-resumen">
+                  Una guía práctica con recomendaciones de estudiantes avanzados para organizar tu tiempo, superar las primeras materias y disfrutar tu carrera.
+                </p>
+              </div>
+              <a href="#aprende-semestre" class="btn-leer-articulo" aria-label="Leer artículo Aprende semestre a semestre en ITSON">
+                Leer artículo completo →
+              </a>
+            </article>
+
+            <!-- PREVIEW 4 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Orientación Vocacional</span>
+                  <span class="preview-fecha">28 de septiembre de 2026</span>
+                  <span class="preview-lectura">5 min</span>
+                </div>
+                <h2 class="preview-titulo">Mitos y realidades sobre aprender a programar</h2>
+                <p class="preview-resumen">
+                  Desmontamos las ideas equivocadas más comunes sobre las matemáticas, el trabajo en soledad y la edad ideal para comenzar tu camino en la tecnología.
+                </p>
+              </div>
+              <a href="#mitos-programacion" class="btn-leer-articulo" aria-label="Leer artículo Mitos y realidades sobre aprender a programar">
+                Leer artículo completo →
+              </a>
+            </article>
+
+            <!-- PREVIEW 5 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Conceptos Clave</span>
+                  <span class="preview-fecha">24 de septiembre de 2026</span>
+                  <span class="preview-lectura">4 min</span>
+                </div>
+                <h2 class="preview-titulo">Frontend y Backend — Dos mundos que construyen una app</h2>
+                <p class="preview-resumen">
+                  Comprende la diferencia entre la interfaz visual que disfrutan los usuarios y la arquitectura interna que procesa datos de forma segura.
+                </p>
+              </div>
+              <a href="#frontend-backend" class="btn-leer-articulo" aria-label="Leer artículo Frontend y Backend">
+                Leer artículo completo →
+              </a>
+            </article>
+
+            <!-- PREVIEW 6 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Vida Universitaria</span>
+                  <span class="preview-fecha">20 de septiembre de 2026</span>
+                  <span class="preview-lectura">5 min</span>
+                </div>
+                <h2 class="preview-titulo">Cómo prepararte para tu primer año de universidad</h2>
+                <p class="preview-resumen">
+                  Estrategias efectivas de adaptación, formación de equipos de estudio y aprovechamiento de los recursos que ofrece el campus de ITSON.
+                </p>
+              </div>
+              <a href="#primer-ano-universidad" class="btn-leer-articulo" aria-label="Leer artículo Cómo prepararte para tu primer año de universidad">
+                Leer artículo completo →
+              </a>
+            </article>
+
+            <!-- PREVIEW 7 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Tecnología y Futuro</span>
+                  <span class="preview-fecha">16 de septiembre de 2026</span>
+                  <span class="preview-lectura">6 min</span>
+                </div>
+                <h2 class="preview-titulo">El papel de la Inteligencia Artificial en el software</h2>
+                <p class="preview-resumen">
+                  Analizamos cómo las herramientas inteligentes se transforman en asistentes de desarrollo y por qué el criterio humano sigue siendo irremplazable.
+                </p>
+              </div>
+              <a href="#inteligencia-artificial" class="btn-leer-articulo" aria-label="Leer artículo El papel de la Inteligencia Artificial en el software">
+                Leer artículo completo →
+              </a>
+            </article>
+
+            <!-- PREVIEW 8 -->
+            <article class="tarjeta-preview-blog reveal">
+              <div>
+                <div class="preview-meta">
+                  <span class="preview-categoria">Desarrollo Profesional</span>
+                  <span class="preview-fecha">12 de septiembre de 2026</span>
+                  <span class="preview-lectura">5 min</span>
+                </div>
+                <h2 class="preview-titulo">De estudiante a profesional — Construye tu portafolio</h2>
+                <p class="preview-resumen">
+                  Pasos clave para transformar proyectos de clase e inquietudes personales en una muestra tangible de tu talento que atraiga a empresas tecnológicas.
+                </p>
+              </div>
+              <a href="#construir-portafolio" class="btn-leer-articulo" aria-label="Leer artículo Construye tu portafolio">
+                Leer artículo completo →
+              </a>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- VISTA 2: LECTOR DE ARTÍCULO INDIVIDUAL -->
+        <div id="vista-articulo-detalle" style="display: none;">
+
+          <!-- ARTÍCULO 1 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="itson-carrera" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
             <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
               <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Vida Universitaria — ITSON</span>
               <span style="font-size: 0.82rem; color: #777;">8 de octubre de 2026</span>
               <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 4 minutos</span>
             </div>
 
-            <h2 style="font-size: 1.65rem; color: var(--azul-marino); margin: 0.8rem 0 1.2rem 0; line-height: 1.3;">Por qué estudiar Ingeniería en Software en ITSON</h2>
+            <h2>Por qué estudiar Ingeniería en Software en ITSON</h2>
 
-            <p style="margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75;">
+            <p>
               Tomar la decisión sobre qué carrera universitaria seguir genera muchas preguntas y emociones. Si sientes curiosidad por saber cómo funcionan las plataformas digitales y sueñas con crear soluciones que ayuden a miles de personas, la Ingeniería en Software en el Instituto Tecnológico de Sonora representa una de las mejores decisiones para tu formación personal y profesional.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">Un campus pensado para creadores de tecnología</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>Un campus pensado para creadores de tecnología</h3>
+            <p>
               En ITSON encuentras laboratorios de cómputo especializados, redes de alta velocidad y acceso a entornos de desarrollo actualizados. No estás solo frente a una pantalla leyendo teoría. Tienes espacios para debatir ideas, probar herramientas en la nube y experimentar con dispositivos modernos desde las primeras semanas de clase.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">Aprender resolviendo retos del mundo real</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>Aprender resolviendo retos del mundo real</h3>
+            <p>
               El modelo educativo de ITSON se enfoca en proyectos prácticos. A lo largo de la carrera trabajas en equipos multidisciplinarios creando sistemas para instituciones locales, negocios y problemáticas sociales. Este enfoque te permite graduarte con un portafolio de proyectos reales que demuestra tu capacidad técnica ante los reclutadores.
             </p>
 
@@ -242,12 +397,11 @@
               </p>
             </div>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">Oportunidades laborales sin fronteras</h3>
-            <p style="margin-bottom: 1.4rem; line-height: 1.75;">
+            <h3>Oportunidades laborales sin fronteras</h3>
+            <p>
               El campo de la tecnología continúa expandiéndose de manera acelerada. Quienes egresan de Ingeniería en Software cuentan con la ventaja de poder trabajar en empresas locales, corporativos internacionales o mediante esquemas de trabajo remoto desde su propia casa, colaborando con equipos de cualquier parte del mundo.
             </p>
 
-            <!-- Barra de compartir -->
             <div class="barra-compartir" aria-label="Compartir en redes sociales">
               <span class="texto-compartir">Comparte esta entrada</span>
               <div class="redes-compartir-items">
@@ -269,43 +423,54 @@
                 </button>
               </div>
             </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+            </div>
           </article>
 
-          <!-- ARTÍCULO 2 -->
-          <article class="reveal" id="como-nace-app" style="background: #FFF; border: 1px solid var(--lila-claro); border-radius: var(--radio-grande); padding: 2.2rem; box-shadow: var(--sombra-card);">
+          <!-- ARTÍCULO 2 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="como-nace-app" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
             <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
               <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Procesos de Desarrollo</span>
               <span style="font-size: 0.82rem; color: #777;">5 de octubre de 2026</span>
               <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 5 minutos</span>
             </div>
 
-            <h2 style="font-size: 1.65rem; color: var(--azul-marino); margin: 0.8rem 0 1.2rem 0; line-height: 1.3;">Cómo nace una aplicación de software</h2>
+            <h2>Cómo nace una aplicación de software</h2>
 
-            <p style="margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75;">
+            <p>
               Todos los días tocamos la pantalla de nuestro teléfono para pedir comida, escuchar música o enviar mensajes a nuestros amigos. Sin embargo, muy pocas personas conocen el camino fascinante que recorre una idea antes de convertirse en un icono funcional en tu pantalla.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">1. El chispazo inicial y la detección de una necesidad</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>1. El chispazo inicial y la detección de una necesidad</h3>
+            <p>
               Una aplicación nunca surge de la nada. Comienza cuando alguien nota una dificultad cotidiana y se pregunta cómo hacerla más sencilla. En esta etapa el equipo entrevista a usuarios para confirmar si la idea realmente resuelve un problema auténtico y si vale la pena invertir tiempo en desarrollarla.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">2. Del boceto en papel al prototipo interactivo</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>2. Del boceto en papel al prototipo interactivo</h3>
+            <p>
               Antes de programar, los diseñadores trazan los primeros esquemas en una libreta o en herramientas digitales. Definen dónde irá cada botón, qué colores transmiten confianza y cómo lograr que una persona entienda la aplicación sin necesidad de leer un manual complicado.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">3. La construcción del código y las conexiones seguras</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>3. La construcción del código y las conexiones seguras</h3>
+            <p>
               Aquí entran los programadores. Se construye la parte visual que interactúa con el usuario y la parte interna que procesa datos en servidores seguros. Se definen reglas estrictas para resguardar contraseñas y asegurar que la información viaje en milisegundos.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">4. La cacería de fallas y el lanzamiento oficial</h3>
-            <p style="margin-bottom: 1.4rem; line-height: 1.75;">
+            <h3>4. La cacería de fallas y el lanzamiento oficial</h3>
+            <p>
               Ningún sistema se publica sin pasar por pruebas exhaustivas. Los testers intentan reproducir situaciones imprevistas, como perder la señal de internet o introducir datos erróneos. Cuando todo funciona de manera impecable, la aplicación se sube a las tiendas oficiales y queda disponible para el mundo.
             </p>
 
-            <!-- Barra de compartir -->
+            <div style="background: #F4F0FD; border-left: 4px solid var(--morado-profundo); padding: 1.2rem 1.5rem; border-radius: var(--radio); margin: 1.5rem 0;">
+              <p style="font-style: italic; color: var(--azul-marino); margin: 0; font-weight: 500;">
+                Las mejores aplicaciones nacen cuando alguien decide transformar una dificultad cotidiana en una solución sencilla y elegante para todos.
+              </p>
+            </div>
+
             <div class="barra-compartir" aria-label="Compartir en redes sociales">
               <span class="texto-compartir">Comparte esta entrada</span>
               <div class="redes-compartir-items">
@@ -327,34 +492,40 @@
                 </button>
               </div>
             </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+            </div>
           </article>
 
-          <!-- ARTÍCULO 3 -->
-          <article class="reveal" id="aprende-semestre" style="background: #FFF; border: 1px solid var(--lila-claro); border-radius: var(--radio-grande); padding: 2.2rem; box-shadow: var(--sombra-card);">
+          <!-- ARTÍCULO 3 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="aprende-semestre" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
             <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
               <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Consejos Estudiantiles</span>
               <span style="font-size: 0.82rem; color: #777;">1 de octubre de 2026</span>
               <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 4 minutos</span>
             </div>
 
-            <h2 style="font-size: 1.65rem; color: var(--azul-marino); margin: 0.8rem 0 1.2rem 0; line-height: 1.3;">Aprende semestre a semestre en ITSON</h2>
+            <h2>Aprende semestre a semestre en ITSON</h2>
 
-            <p style="margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.75;">
+            <p>
               Iniciar la universidad representa un cambio grande frente a la preparatoria. Tienes mayor libertad para organizar tus horarios, pero también adquieres la responsabilidad de gestionar tus proyectos. Para que disfrutes tu carrera al máximo, te compartimos los mejores consejos recopilados por compañeros de semestres avanzados.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">Los primeros semestres — La base de tu lógica</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>Los primeros semestres — La base de tu lógica</h3>
+            <p>
               Al inicio cursarás algoritmos, matemáticas discretas y programación básica. Es completamente normal sentir frustración cuando un programa marca errores que no comprendes de inmediato. La habilidad más importante en esta etapa no es saberlo todo, sino aprender a leer los mensajes de error con calma y buscar soluciones paso a paso.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">A la mitad del camino — El poder de los proyectos personales</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>A la mitad del camino — El poder de los proyectos personales</h3>
+            <p>
               Entre el tercer y sexto semestre profundizarás en bases de datos, aplicaciones móviles y arquitectura. No te limites únicamente a lo que pide la tarea. Si tienes una idea para una página web o un videojuego sencillo, constrúyelo en tus ratos libres. Ese entusiasmo marcará la diferencia en tu currículum.
             </p>
 
-            <h3 style="font-size: 1.2rem; color: var(--morado-profundo); margin: 1.5rem 0 0.6rem 0;">El tramo final — Tu puente hacia la empresa</h3>
-            <p style="margin-bottom: 1.2rem; line-height: 1.75;">
+            <h3>El tramo final — Tu puente hacia la empresa</h3>
+            <p>
               En los últimos semestres realizas tus estancias profesionales y tu proyecto integrador. Aprovecha las asesorías con tus profesores y mantén una actitud abierta al aprendizaje. Muchos estudiantes de ITSON reciben ofertas de empleo formal en las mismas empresas donde realizaron sus prácticas.
             </p>
 
@@ -368,7 +539,6 @@
               </ul>
             </div>
 
-            <!-- Barra de compartir -->
             <div class="barra-compartir" aria-label="Compartir en redes sociales">
               <span class="texto-compartir">Comparte esta entrada</span>
               <div class="redes-compartir-items">
@@ -389,6 +559,335 @@
                   Copiar enlace
                 </button>
               </div>
+            </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+            </div>
+          </article>
+
+          <!-- ARTÍCULO 4 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="mitos-programacion" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
+              <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Orientación Vocacional</span>
+              <span style="font-size: 0.82rem; color: #777;">28 de septiembre de 2026</span>
+              <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 5 minutos</span>
+            </div>
+
+            <h2>Mitos y realidades sobre aprender a programar</h2>
+
+            <p>
+              Al pensar en estudiar desarrollo de software suelen surgir temores infundados alimentados por el cine y las redes sociales. Despejar estas ideas equivocadas te permitirá tomar una decisión informada y descubrir que la programación es una disciplina mucho más accesible y gratificante de lo que imaginas.
+            </p>
+
+            <h3>Mito 1 — Tienes que ser un genio en matemáticas avanzadas</h3>
+            <p>
+              Muchas personas creen que programar consiste en resolver ecuaciones complejas todo el día. En realidad, la gran mayoría de los sistemas requiere pensamiento lógico, sentido común y la capacidad de descomponer un problema en pasos pequeños. Las matemáticas universitarias te ayudarán a estructurar tu mente, pero no necesitas haber sido medallista olímpico para ser un excelente desarrollador.
+            </p>
+
+            <h3>Mito 2 — Pasarás horas trabajando en soledad</h3>
+            <p>
+              La imagen del programador aislado en un cuarto oscuro es completamente falsa. El desarrollo de software moderno es una labor profundamente social. Todos los días dialogas con diseñadores, líderes de proyecto, compañeros de equipo y usuarios reales para entender qué necesitan y cómo brindarles la mejor experiencia.
+            </p>
+
+            <div style="background: #F4F0FD; border-left: 4px solid var(--morado-profundo); padding: 1.2rem 1.5rem; border-radius: var(--radio); margin: 1.5rem 0;">
+              <p style="font-style: italic; color: var(--azul-marino); margin: 0; font-weight: 500;">
+                El talento fundamental de quien crea software no es memorizar comandos de memoria, sino tener la curiosidad de entender cómo resolver una dificultad real.
+              </p>
+            </div>
+
+            <h3>Mito 3 — Si no aprendiste desde niño ya es tarde</h3>
+            <p>
+              Existe la creencia de que solo triunfan quienes empezaron a programar a los diez años. La realidad en las aulas de ITSON demuestra lo contrario. Gran parte de los estudiantes más destacados escribe su primer programa formal durante el primer semestre de la carrera. Con constancia y práctica diaria, cualquier persona puede alcanzar un nivel sobresaliente.
+            </p>
+
+            <h3>Mito 4 — Es un trabajo rígido y sin espacio para la creatividad</h3>
+            <p>
+              Programar es uno de los oficios más creativos del mundo moderno. Cada línea de código es una herramienta para materializar ideas, desde diseñar interfaces atractivas hasta idear formas innovadoras de proteger la privacidad de los usuarios. Hay tantas maneras de resolver un reto como mentes trabajando en él.
+            </p>
+
+            <div class="barra-compartir" aria-label="Compartir en redes sociales">
+              <span class="texto-compartir">Comparte esta entrada</span>
+              <div class="redes-compartir-items">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en Facebook">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en X">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+                </a>
+                <button type="button" class="btn-copiar-enlace" data-url="https://itson.edu.mx" aria-label="Copiar enlace al portapapeles">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  Copiar enlace
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+            </div>
+          </article>
+
+          <!-- ARTÍCULO 5 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="frontend-backend" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
+              <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Conceptos Clave</span>
+              <span style="font-size: 0.82rem; color: #777;">24 de septiembre de 2026</span>
+              <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 4 minutos</span>
+            </div>
+
+            <h2>Frontend y Backend — Dos mundos que construyen una app</h2>
+
+            <p>
+              Cuando navegas en una aplicación o sitio web estás interactuando con dos dimensiones técnicas coordinadas de forma impecable. Una parte se encarga de lo que tus ojos contemplan y tus dedos tocan, mientras que la otra procesa silenciosamente millones de operaciones en servidores seguros.
+            </p>
+
+            <h3>Frontend — El arte de la interacción visual</h3>
+            <p>
+              El frontend abarca todo lo visible en pantalla. Los especialistas en esta área diseñan botones atractivos, animaciones suaves y tipografías legibles. Su meta consiste en que cualquier persona, sin importar su edad, navegue de manera cómoda y sin confusiones. Utilizan tecnologías como HTML para la estructura, CSS para el diseño visual y JavaScript para dotar de dinamismo a cada componente.
+            </p>
+
+            <h3>Backend — El cerebro lógico y las bases de datos</h3>
+            <p>
+              El backend vive en los servidores y permanece oculto al usuario final. Es responsable de autenticar contraseñas, gestionar cobros con tarjetas bancarias, almacenar mensajes y consultar enormes bases de datos en milisegundos. Sin un backend sólido, ninguna plataforma podría garantizar la seguridad y privacidad de la información.
+            </p>
+
+            <div style="background: #F4F0FD; border-left: 4px solid var(--morado-profundo); padding: 1.2rem 1.5rem; border-radius: var(--radio); margin: 1.5rem 0;">
+              <p style="font-style: italic; color: var(--azul-marino); margin: 0; font-weight: 500;">
+                El frontend cautiva al usuario a primera vista, mientras que el backend garantiza que cada interacción sea rápida, estable y segura.
+              </p>
+            </div>
+
+            <h3>La unión perfecta y el camino Full Stack</h3>
+            <p>
+              Ambas áreas se comunican a través de canales de enlace llamados interfaces de programación. Quienes dominan ambas disciplinas son conocidos como desarrolladores de pila completa. Durante tu carrera en ITSON explorarás ambas especialidades, permitiéndote descubrir cuál encaja mejor con tu estilo y pasión profesional.
+            </p>
+
+            <div class="barra-compartir" aria-label="Compartir en redes sociales">
+              <span class="texto-compartir">Comparte esta entrada</span>
+              <div class="redes-compartir-items">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en Facebook">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en X">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+                </a>
+                <button type="button" class="btn-copiar-enlace" data-url="https://itson.edu.mx" aria-label="Copiar enlace al portapapeles">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  Copiar enlace
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+            </div>
+          </article>
+
+          <!-- ARTÍCULO 6 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="primer-ano-universidad" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
+              <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Vida Universitaria</span>
+              <span style="font-size: 0.82rem; color: #777;">20 de septiembre de 2026</span>
+              <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 5 minutos</span>
+            </div>
+
+            <h2>Cómo prepararte para tu primer año de universidad</h2>
+
+            <p>
+              El paso de la preparatoria a la universidad en ITSON representa una transformación emocionante. Ganas libertad para decidir tus rutinas, conoces amistades que compartirán tu vocación y enfrentas desafíos intelectuales estimulantes. Para empezar con el pie derecho, aquí reunimos las mejores pautas de adaptación.
+            </p>
+
+            <h3>Gestiona tus horas con anticipación</h3>
+            <p>
+              En la universidad las evaluaciones suelen concentrarse en proyectos de mediano plazo. Dejar el desarrollo de un programa para la noche previa a la entrega suele provocar estrés innecesario y fallas en el código. Reservar dos horas diarias para avanzar en tus materias te permitirá mantener calificaciones altas y disfrutar tus fines de semana con tranquilidad.
+            </p>
+
+            <h3>Forma equipos de estudio desde las primeras semanas</h3>
+            <p>
+              Aprender a programar es mucho más fácil cuando compartes dudas con tus compañeros. Explicar un concepto a otra persona consolida tu propio entendimiento. Los laboratorios de cómputo de ITSON son ideales para reunirse en equipo, resolver problemas de lógica y compartir trucos útiles de desarrollo.
+            </p>
+
+            <div style="background: #F4F0FD; border-left: 4px solid var(--morado-profundo); padding: 1.2rem 1.5rem; border-radius: var(--radio); margin: 1.5rem 0;">
+              <p style="font-style: italic; color: var(--azul-marino); margin: 0; font-weight: 500;">
+                La universidad no es una competencia individual. Es un entorno de colaboración donde las mejores ideas nacen del diálogo entre compañeros.
+              </p>
+            </div>
+
+            <h3>Aprovecha al máximo los servicios del campus</h3>
+            <p>
+              ITSON pone a tu disposición asesorías académicas personalizadas, bibliotecas con recursos digitales internacionales, licencias de software educativo y áreas deportivas de primer nivel. Integrar el ejercicio físico y actividades recreativas en tu semana mantendrá tu mente despejada y lista para nuevos retos.
+            </p>
+
+            <div class="barra-compartir" aria-label="Compartir en redes sociales">
+              <span class="texto-compartir">Comparte esta entrada</span>
+              <div class="redes-compartir-items">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en Facebook">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en X">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+                </a>
+                <button type="button" class="btn-copiar-enlace" data-url="https://itson.edu.mx" aria-label="Copiar enlace al portapapeles">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  Copiar enlace
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+            </div>
+          </article>
+
+          <!-- ARTÍCULO 7 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="inteligencia-artificial" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
+              <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Tecnología y Futuro</span>
+              <span style="font-size: 0.82rem; color: #777;">16 de septiembre de 2026</span>
+              <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 6 minutos</span>
+            </div>
+
+            <h2>El papel de la Inteligencia Artificial en el software</h2>
+
+            <p>
+              La rápida evolución de los modelos de inteligencia artificial ha despertado conversaciones profundas sobre el futuro de la ingeniería. Quienes contemplan ingresar a la carrera a menudo se preguntan si seguirá habiendo trabajo para los desarrolladores. La respuesta es un rotundo sí, y las perspectivas son más estimulantes que nunca.
+            </p>
+
+            <h3>Un asistente incansable para tareas repetitivas</h3>
+            <p>
+              En la actualidad las herramientas inteligentes actúan como copilotos. Ayudan a autocompletar fragmentos rutinarios, sugieren correcciones de sintaxis y asisten en la redacción de pruebas preliminares. Esto libera a los ingenieros del trabajo mecánico, permitiéndoles enfocar su energía en diseñar soluciones ingeniosas para problemas complejos.
+            </p>
+
+            <h3>El criterio humano y la empatía son insustituibles</h3>
+            <p>
+              Una computadora no puede sentir empatía ni entender a fondo el dolor o la frustración de un usuario frente a un sistema deficiente. Tampoco puede asumir la responsabilidad ética de salvaguardar datos confidenciales ni negociar acuerdos estratégicos con un cliente. El verdadero valor de un ingeniero radica en su capacidad de juicio, diseño arquitectónico y sensibilidad social.
+            </p>
+
+            <div style="background: #F4F0FD; border-left: 4px solid var(--morado-profundo); padding: 1.2rem 1.5rem; border-radius: var(--radio); margin: 1.5rem 0;">
+              <p style="font-style: italic; color: var(--azul-marino); margin: 0; font-weight: 500;">
+                Las herramientas inteligentes multiplican la velocidad de quien comprende los fundamentos, pero jamás sustituirán la creatividad y el juicio ético de las personas.
+              </p>
+            </div>
+
+            <h3>Formación vanguardista en ITSON</h3>
+            <p>
+              El plan de estudios de ITSON abraza las nuevas tecnologías con visión crítica y constructiva. Aprenderás a integrar modelos inteligentes en tus aplicaciones, evaluar su precisión y aplicar estándares éticos para crear sistemas confiables que impacten positivamente en la sociedad.
+            </p>
+
+            <div class="barra-compartir" aria-label="Compartir en redes sociales">
+              <span class="texto-compartir">Comparte esta entrada</span>
+              <div class="redes-compartir-items">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en Facebook">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en X">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+                </a>
+                <button type="button" class="btn-copiar-enlace" data-url="https://itson.edu.mx" aria-label="Copiar enlace al portapapeles">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  Copiar enlace
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+            </div>
+          </article>
+
+          <!-- ARTÍCULO 8 DETALLE -->
+          <article class="articulo-item-completo articulo-completo-vista" id="construir-portafolio" style="display: none;">
+            <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
+
+            <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.5rem;">
+              <span style="background: #EAE6FF; color: var(--morado-profundo); padding: 0.35rem 0.85rem; border-radius: 15px; font-size: 0.82rem; font-weight: 600;">Desarrollo Profesional</span>
+              <span style="font-size: 0.82rem; color: #777;">12 de septiembre de 2026</span>
+              <span style="font-size: 0.82rem; color: var(--morado-profundo); font-weight: 500;">Lectura de 5 minutos</span>
+            </div>
+
+            <h2>De estudiante a profesional — Construye tu portafolio</h2>
+
+            <p>
+              En el mundo del desarrollo de software las empresas buscan evidencia tangible de lo que sabes construir. Un portafolio digital con aplicaciones reales es la mejor carta de presentación que puedes tener para acceder a pasantías, estancias profesionales y empleos formales incluso antes de egresar.
+            </p>
+
+            <h3>Cuenta la historia detrás de cada proyecto</h3>
+            <p>
+              No te limites a compartir un enlace a tu código. Explica qué problema descubriste, qué alternativas analizaste, qué tecnologías seleccionaste y qué dificultades técnicas superaste. A los líderes técnicos les interesa conocer tu manera de razonar tanto como el resultado final.
+            </p>
+
+            <h3>Calidad y detalle antes que volumen</h3>
+            <p>
+              Tener dos o tres proyectos impecables, con una interfaz cuidada, código limpio y una demostración funcional en la web causa un impacto mucho mayor que presentar diez ejercicios escolares incompletos. Elige ideas que te apasionen y pule cada detalle visual y funcional.
+            </p>
+
+            <div style="background: #F4F0FD; border-left: 4px solid var(--morado-profundo); padding: 1.2rem 1.5rem; border-radius: var(--radio); margin: 1.5rem 0;">
+              <p style="font-style: italic; color: var(--azul-marino); margin: 0; font-weight: 500;">
+                Un proyecto que solucione una necesidad real en tu comunidad o en tu universidad demuestra madurez profesional y vocación de servicio.
+              </p>
+            </div>
+
+            <h3>Comparte tu trabajo con el mundo</h3>
+            <p>
+              Utiliza plataformas como GitHub para publicar tus repositorios con descripciones claras. Complementa tu presencia digital creando un perfil activo en redes profesionales y documentando tus aprendizajes. En la comunidad tecnológica compartir lo que aprendes abre puertas inesperadas.
+            </p>
+
+            <div class="barra-compartir" aria-label="Compartir en redes sociales">
+              <span class="texto-compartir">Comparte esta entrada</span>
+              <div class="redes-compartir-items">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en Facebook">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en X">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://api.whatsapp.com/send?text=https%3A%2F%2Fitson.edu.mx" target="_blank" rel="noopener noreferrer" class="btn-red-share" aria-label="Compartir en WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/></svg>
+                </a>
+                <button type="button" class="btn-copiar-enlace" data-url="https://itson.edu.mx" aria-label="Copiar enlace al portapapeles">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  Copiar enlace
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; border-top: 1px solid var(--lila-claro); padding-top: 1.5rem;">
+              <button type="button" class="btn-volver-blog">← Volver a todos los artículos</button>
             </div>
           </article>
 
@@ -406,13 +905,16 @@
               <a href="blog.html#itson-carrera">Por qué estudiar Ingeniería en Software en ITSON</a>
             </li>
             <li class="item-sidebar-pop">
-              <a href="roles.html#analista">Qué hace un ingeniero en software todos los días</a>
+              <a href="blog.html#mitos-programacion">Mitos y realidades sobre aprender a programar</a>
             </li>
             <li class="item-sidebar-pop">
-              <a href="recursos.html#plan-estudios">Así es el plan de estudios 2023</a>
+              <a href="blog.html#como-nace-app">Cómo nace una aplicación de software</a>
             </li>
             <li class="item-sidebar-pop">
-              <a href="ciclo-de-vida.html#fases">Las 8 fases para crear una app</a>
+              <a href="blog.html#inteligencia-artificial">El papel de la Inteligencia Artificial en el software</a>
+            </li>
+            <li class="item-sidebar-pop">
+              <a href="blog.html#construir-portafolio">De estudiante a profesional — Construye tu portafolio</a>
             </li>
           </ul>
         </div>
@@ -421,16 +923,24 @@
           <h3 class="titulo-bloque-sidebar">Artículos recientes</h3>
           <ul class="lista-sidebar">
             <li class="item-sidebar-rec">
-              <a href="blog.html#itson-carrera">Bienvenido al blog Tu lugar en Software</a>
+              <a href="blog.html#itson-carrera">Por qué estudiar Ingeniería en Software en ITSON</a>
               <span class="fecha-sidebar-rec">8 de octubre de 2026</span>
             </li>
             <li class="item-sidebar-rec">
-              <a href="blog.html#aprende-semestre">Consejos para tu primer año de carrera</a>
+              <a href="blog.html#como-nace-app">Cómo nace una aplicación de software</a>
               <span class="fecha-sidebar-rec">5 de octubre de 2026</span>
             </li>
             <li class="item-sidebar-rec">
-              <a href="roles.html#analista">Descubre el rol que mejor encaja contigo</a>
+              <a href="blog.html#aprende-semestre">Aprende semestre a semestre en ITSON</a>
               <span class="fecha-sidebar-rec">1 de octubre de 2026</span>
+            </li>
+            <li class="item-sidebar-rec">
+              <a href="blog.html#mitos-programacion">Mitos y realidades sobre aprender a programar</a>
+              <span class="fecha-sidebar-rec">28 de septiembre de 2026</span>
+            </li>
+            <li class="item-sidebar-rec">
+              <a href="blog.html#frontend-backend">Frontend y Backend — Dos mundos que construyen una app</a>
+              <span class="fecha-sidebar-rec">24 de septiembre de 2026</span>
             </li>
           </ul>
         </div>

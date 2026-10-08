@@ -449,3 +449,63 @@
     }, 2500);
   }
 })();
+
+/* =====================================================
+   12. VISTA INDIVIDUAL DE ARTÍCULOS EN EL BLOG
+   ===================================================== */
+(function iniciarLectorBlog() {
+  const vistaLista = document.getElementById('vista-lista-articulos');
+  const vistaDetalle = document.getElementById('vista-articulo-detalle');
+
+  if (!vistaLista || !vistaDetalle) return;
+
+  function gestionarRutaArticulo() {
+    const hash = window.location.hash.replace('#', '');
+    const articulos = vistaDetalle.querySelectorAll('.articulo-item-completo');
+
+    if (!hash || hash === 'todos' || hash === 'contenido-principal') {
+      vistaLista.style.display = 'block';
+      vistaDetalle.style.display = 'none';
+      articulos.forEach(function (art) { art.style.display = 'none'; });
+      return;
+    }
+
+    const articuloSeleccionado = vistaDetalle.querySelector(`#${hash}`);
+    if (articuloSeleccionado) {
+      vistaLista.style.display = 'none';
+      vistaDetalle.style.display = 'block';
+      articulos.forEach(function (art) { art.style.display = 'none'; });
+      articuloSeleccionado.style.display = 'block';
+      window.scrollTo({ top: vistaDetalle.offsetTop - 80, behavior: 'smooth' });
+    } else {
+      vistaLista.style.display = 'block';
+      vistaDetalle.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('hashchange', gestionarRutaArticulo);
+  window.addEventListener('DOMContentLoaded', gestionarRutaArticulo);
+  gestionarRutaArticulo();
+
+  document.addEventListener('click', function (e) {
+    const btnVolver = e.target.closest('.btn-volver-blog');
+    if (btnVolver) {
+      e.preventDefault();
+      history.pushState(null, '', window.location.pathname);
+      gestionarRutaArticulo();
+      window.scrollTo({ top: vistaLista.offsetTop - 80, behavior: 'smooth' });
+    }
+  });
+
+  document.querySelectorAll('a[href="blog.html"]').forEach(function (enlace) {
+    enlace.addEventListener('click', function () {
+      if (window.location.hash) {
+        setTimeout(function () {
+          history.pushState(null, '', window.location.pathname);
+          gestionarRutaArticulo();
+        }, 10);
+      }
+    });
+  });
+})();
+
