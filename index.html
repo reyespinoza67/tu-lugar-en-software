@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- =====================================================
+       Tu lugar en Software — Página de inicio
+       Blog educativo — Equipo ITSON
+       ===================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tu lugar en Software | Blog educativo de Ingeniería en Software — ITSON</title>
+  <meta name="description"
+    content="Blog educativo del equipo ITSON para estudiantes que quieren conocer la carrera de Ingeniería en Software. Aprende, explora y construye tu futuro." />
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg" />
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HERO / CABECERA DEL BLOG
+       ===================================================== -->
+  <header class="hero" role="banner">
+    <div class="hero-grid">
+
+      <!-- Zona izquierda: laptop e ilustración SVG -->
+      <div class="hero-izq" aria-hidden="true">
+        <svg class="laptop-svg" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="30" cy="80" rx="28" ry="12" fill="#6A3DAF" opacity="0.7" transform="rotate(-40 30 80)" />
+          <ellipse cx="20" cy="110" rx="32" ry="11" fill="#B9A3E3" opacity="0.5" transform="rotate(-20 20 110)" />
+          <ellipse cx="220" cy="60" rx="26" ry="10" fill="#4B2A8C" opacity="0.6" transform="rotate(35 220 60)" />
+          <ellipse cx="235" cy="95" rx="30" ry="11" fill="#7C5CBF" opacity="0.5" transform="rotate(50 235 95)" />
+          <rect x="40" y="130" width="180" height="10" rx="5" fill="#1E1060" />
+          <rect x="30" y="138" width="200" height="6" rx="3" fill="#2D1A80" />
+          <rect x="50" y="40" width="160" height="95" rx="6" fill="#0D0D2B" />
+          <rect x="56" y="46" width="148" height="83" rx="3" fill="#0A0A1A" />
+          <rect x="62" y="54" width="60" height="4" rx="2" fill="#B9A3E3" opacity="0.8" />
+          <rect x="62" y="63" width="80" height="4" rx="2" fill="#7C5CBF" opacity="0.7" />
+          <rect x="68" y="72" width="55" height="4" rx="2" fill="#4FC3F7" opacity="0.8" />
+          <rect x="68" y="81" width="70" height="4" rx="2" fill="#B9A3E3" opacity="0.6" />
+          <rect x="62" y="90" width="90" height="4" rx="2" fill="#7C5CBF" opacity="0.7" />
+          <rect x="62" y="99" width="50" height="4" rx="2" fill="#4FC3F7" opacity="0.5" />
+          <rect x="68" y="108" width="75" height="4" rx="2" fill="#B9A3E3" opacity="0.6" />
+          <text x="150" y="100" font-family="monospace" font-size="22" fill="#B9A3E3" opacity="0.9"
+            font-weight="bold">&lt;/&gt;</text>
+        </svg>
+      </div>
+
+      <!-- Zona central: títulos + Logotipo oficial -->
+      <div class="hero-centro">
+        <a href="index.html" class="logo-link-hero" aria-label="Ir a la página de inicio">
+          <img src="img/logo.svg" alt="Logotipo Tu lugar en Software" width="64" height="64" style="margin: 0 auto 0.8rem auto; display: block;" />
+        </a>
+        <p class="hero-titulo-top">Tu lugar en</p>
+        <div class="hero-codigo-deco">
+          <svg class="icono-codigo" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="rgba(185,163,227,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+          <h1 class="hero-titulo-main">
+            Soft<span class="acento-lila">ware</span>
+          </h1>
+          <svg class="icono-codigo" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="rgba(185,163,227,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            aria-hidden="true">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+        </div>
+        <p class="hero-lema">APRENDE &nbsp;·&nbsp; EXPLORA &nbsp;·&nbsp; CONSTRUYE &nbsp;·&nbsp; TU FUTURO</p>
+      </div>
+
+      <!-- Zona derecha: frase lema oficial + silueta ciudad SVG -->
+      <div class="hero-der" aria-hidden="true">
+        <p class="hero-frase">
+          Más que una carrera, es una forma de crear el mundo que imaginas
+          <span class="corazon">♥</span>
+        </p>
+        <svg class="silueta-ciudad" viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gradAtardecer" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#4B2A8C" />
+              <stop offset="50%" style="stop-color:#C05C8A" />
+              <stop offset="100%" style="stop-color:#F7A8C4" />
+            </linearGradient>
+          </defs>
+          <rect width="220" height="200" fill="url(#gradAtardecer)" rx="12" />
+          <rect x="0" y="120" width="30" height="80" fill="rgba(11,31,75,0.8)" />
+          <rect x="28" y="100" width="25" height="100" fill="rgba(11,31,75,0.7)" />
+          <rect x="51" y="130" width="20" height="70" fill="rgba(11,31,75,0.6)" />
+          <rect x="69" y="110" width="28" height="90" fill="rgba(11,31,75,0.75)" />
+          <rect x="160" y="115" width="25" height="85" fill="rgba(11,31,75,0.7)" />
+          <rect x="183" y="95" width="37" height="105" fill="rgba(11,31,75,0.8)" />
+          <rect x="4" y="128" width="5" height="5" fill="rgba(255,220,100,0.6)" />
+          <rect x="14" y="128" width="5" height="5" fill="rgba(255,220,100,0.4)" />
+          <rect x="4" y="140" width="5" height="5" fill="rgba(255,220,100,0.5)" />
+          <rect x="32" y="110" width="5" height="5" fill="rgba(255,220,100,0.5)" />
+          <rect x="42" y="120" width="5" height="5" fill="rgba(255,220,100,0.4)" />
+          <rect x="186" y="105" width="5" height="5" fill="rgba(255,220,100,0.6)" />
+          <rect x="196" y="115" width="5" height="5" fill="rgba(255,220,100,0.4)" />
+          <g transform="translate(95,75)">
+            <ellipse cx="15" cy="60" rx="9" ry="18" fill="#0B1F4B" />
+            <circle cx="15" cy="36" r="9" fill="#0B1F4B" />
+            <rect x="6" y="50" width="7" height="14" rx="2" fill="#2D1A80" />
+            <line x1="6" y1="55" x2="-2" y2="68" stroke="#0B1F4B" stroke-width="5" stroke-linecap="round" />
+            <line x1="24" y1="55" x2="32" y2="68" stroke="#0B1F4B" stroke-width="5" stroke-linecap="round" />
+            <line x1="10" y1="76" x2="8" y2="92" stroke="#0B1F4B" stroke-width="5" stroke-linecap="round" />
+            <line x1="20" y1="76" x2="22" y2="92" stroke="#0B1F4B" stroke-width="5" stroke-linecap="round" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================
+       BARRA DE NAVEGACIÓN PRINCIPAL
+       ===================================================== -->
+  <nav class="barra-nav" aria-label="Navegación principal">
+    <div class="nav-contenedor">
+
+      <!-- Marca y Logotipo visible -->
+      <a href="index.html" class="nav-marca">
+        <img src="img/logo.svg" alt="Logotipo Tu lugar en Software" class="logo-header-img" />
+        <span class="nav-marca-texto">Tu lugar en Software</span>
+      </a>
+
+      <!-- Botón hamburguesa (móvil) -->
+      <button class="btn-hamburguesa" id="btn-hamburguesa" aria-controls="nav-lista-principal" aria-expanded="false"
+        aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Lista de páginas con submenús desplegables -->
+      <ul class="nav-lista" id="nav-lista-principal" role="list">
+        <li>
+          <a href="index.html" class="activo" aria-current="page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Inicio
+          </a>
+        </li>
+
+        <li class="nav-item-has-submenu">
+          <a href="ciclo-de-vida.html" class="nav-link-padre">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 4 23 10 17 10" />
+              <polyline points="1 20 1 14 7 14" />
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+            </svg>
+            El ciclo de vida
+            <svg class="icono-flecha-sub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <button type="button" class="btn-toggle-sub" aria-label="Desplegar submenú El ciclo de vida" aria-expanded="false">▾</button>
+          <ul class="nav-submenu">
+            <li><a href="ciclo-de-vida.html#que-es">Qué es</a></li>
+            <li><a href="ciclo-de-vida.html#fases">Las 8 fases</a></li>
+            <li><a href="ciclo-de-vida.html#ventajas-desventajas">Ventajas y desventajas</a></li>
+            <li><a href="ciclo-de-vida.html#quiz-seccion">Quiz</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item-has-submenu">
+          <a href="roles.html" class="nav-link-padre">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            Roles
+            <svg class="icono-flecha-sub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <button type="button" class="btn-toggle-sub" aria-label="Desplegar submenú Roles" aria-expanded="false">▾</button>
+          <ul class="nav-submenu">
+            <li><a href="roles.html#analista">Analista de sistemas</a></li>
+            <li><a href="roles.html#tester">Tester</a></li>
+            <li><a href="roles.html#arquitecto-programador">Arquitecto y programador</a></li>
+            <li><a href="roles.html#lider">Líder de proyecto</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item-has-submenu">
+          <a href="recursos.html" class="nav-link-padre">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+            Recursos
+            <svg class="icono-flecha-sub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <button type="button" class="btn-toggle-sub" aria-label="Desplegar submenú Recursos" aria-expanded="false">▾</button>
+          <ul class="nav-submenu">
+            <li><a href="recursos.html#plan-estudios">Plan de estudios</a></li>
+            <li><a href="recursos.html#materias-semestre">Materias por semestre</a></li>
+            <li><a href="recursos.html#requisitos-titulacion">Requisitos de titulación</a></li>
+            <li><a href="recursos.html#mapa-curricular">Mapa curricular</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item-has-submenu">
+          <a href="blog.html" class="nav-link-padre">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+            Blog
+            <svg class="icono-flecha-sub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <button type="button" class="btn-toggle-sub" aria-label="Desplegar submenú Blog" aria-expanded="false">▾</button>
+          <ul class="nav-submenu">
+            <li><a href="blog.html#itson-carrera">ITSON y la carrera</a></li>
+            <li><a href="blog.html#como-nace-app">Cómo nace una app</a></li>
+            <li><a href="blog.html#aprende-semestre">Aprende semestre a semestre</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item-has-submenu">
+          <a href="contacto.html" class="nav-link-padre">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Contacto
+            <svg class="icono-flecha-sub" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <button type="button" class="btn-toggle-sub" aria-label="Desplegar submenú Contacto" aria-expanded="false">▾</button>
+          <ul class="nav-submenu">
+            <li><a href="contacto.html#formulario-contacto">Formulario</a></li>
+            <li><a href="contacto.html#voces-invitadas">Voces invitadas</a></li>
+            <li><a href="contacto.html#equipo-desarrollo">Equipo</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Módulo de búsqueda global sin servidor -->
+      <div class="busqueda-contenedor">
+        <button type="button" class="btn-buscar-toggle" id="btn-buscar-toggle" aria-label="Abrir campo de búsqueda">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <form class="busqueda-form" role="search" onsubmit="return false;">
+          <label for="input-busqueda-global" class="visually-hidden">Buscar en el blog</label>
+          <svg class="icono-lupa-busqueda" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="input-busqueda-global" class="input-busqueda-global" placeholder="Buscar..." autocomplete="off" aria-expanded="false" aria-controls="panel-busqueda-resultados" />
+          <div id="panel-busqueda-resultados" class="panel-busqueda-resultados" role="region" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- Redes sociales con Facebook y aria-label X antes Twitter -->
+      <div class="nav-redes" aria-label="Redes sociales">
+        <div class="nav-divisor" aria-hidden="true"></div>
+        <a href="#" class="red-social" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0B1F4B" />
+          </svg>
+        </a>
+        <a href="#" class="red-social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+        <a href="#" class="red-social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" class="red-social" aria-label="X antes Twitter" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+        <a href="#" class="red-social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL: BIENVENIDA
+       ===================================================== -->
+  <main id="contenido-principal">
+
+    <!-- Sección bienvenida en tres columnas -->
+    <section class="seccion-bienvenida" aria-labelledby="titulo-bienvenida">
+      <div class="bienvenida-grid">
+
+        <!-- Columna izquierda: ilustración del estudiante -->
+        <div class="bienvenida-izq reveal-izq">
+          <div class="mancha-organica" aria-hidden="true"></div>
+          <img src="img/estudiante-escritorio.jpg"
+            alt="Ilustración de un estudiante frente a dos monitores con código, con una taza de café en el escritorio"
+            width="280" height="320" loading="lazy" />
+        </div>
+
+        <!-- Columna central: texto de bienvenida con el párrafo resumen del blog requerido -->
+        <div class="bienvenida-centro reveal">
+          <h2 class="titulo-bienvenida" id="titulo-bienvenida">¡Te damos la bienvenida!</h2>
+          <p>
+            Gracias por estar aquí. Este blog fue creado por estudiantes de Ingeniería en Software de ITSON
+            pensando en ti, que estás por elegir tu carrera universitaria.
+          </p>
+          <p style="font-weight: 500; color: var(--morado-profundo); margin: 0.8rem 0;">
+            Este blog trata del ciclo de vida del software, los roles de un equipo de desarrollo y todo lo que implica la carrera de Ingeniería en Software en ITSON.
+          </p>
+          <p>
+            Aquí encontrarás información clara, actividades interactivas y experiencias reales para descubrir tu vocación y construir el futuro que imaginas.
+          </p>
+          <span class="nota-manuscrita">Te acompañamos en tu camino. Tu lugar en software ✨</span>
+        </div>
+
+        <!-- Columna derecha: tarjetas mini destacadas -->
+        <div class="bienvenida-der reveal-der" id="tarjetas-destacadas">
+
+          <!-- Tarjeta 1: Ciclo del software -->
+          <article class="tarjeta-mini">
+            <div class="icono-circulo ic-lila" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <line x1="9" y1="18" x2="15" y2="18" />
+                <line x1="10" y1="22" x2="14" y2="22" />
+                <path
+                  d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14" />
+              </svg>
+            </div>
+            <div class="tarjeta-mini-info">
+              <h3>El ciclo de vida</h3>
+              <p>Entiende las 8 fases fundamentales para crear una app desde cero.</p>
+              <a href="ciclo-de-vida.html" class="enlace-flecha">
+                Explorar fases
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2: Roles del equipo -->
+          <article class="tarjeta-mini">
+            <div class="icono-circulo ic-azul" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </div>
+            <div class="tarjeta-mini-info">
+              <h3>Roles del equipo</h3>
+              <p>Descubre si encajas mejor como analista, tester, programador o líder.</p>
+              <a href="roles.html" class="enlace-flecha">
+                Conocer roles
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Plan de estudios ITSON -->
+          <article class="tarjeta-mini">
+            <div class="icono-circulo ic-verde" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </div>
+            <div class="tarjeta-mini-info">
+              <h3>Plan de estudios 2023</h3>
+              <p>Consulta las materias por semestre y requisitos de titulación en ITSON.</p>
+              <a href="recursos.html" class="enlace-flecha">
+                Ver plan 2023
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Tarjeta 4: Contacto y voces -->
+          <article class="tarjeta-mini">
+            <div class="icono-circulo ic-rosa" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+            </div>
+            <div class="tarjeta-mini-info">
+              <h3>Comunidad y contacto</h3>
+              <p>Lee experiencias de egresados y envía tus preguntas al equipo.</p>
+              <a href="contacto.html" class="enlace-flecha">
+                Escribir al equipo
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+      <!-- Bloque corto de suscripción al newsletter en la página de bienvenida -->
+      <div class="bloque-sidebar" style="margin-top: 2.5rem; background: var(--gris-suave);">
+        <h3 class="titulo-bloque-sidebar">Recibe novedades del blog</h3>
+        <p style="font-size:0.9rem; margin-bottom: 1rem; color: var(--gris-texto);">
+          Inscríbete con tu correo para recibir artículos educativos sobre desarrollo de software y vida universitaria en ITSON.
+        </p>
+        <form class="form-newsletter" novalidate style="max-width: 500px;">
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <input type="email" class="input-newsletter" placeholder="Tu correo electrónico" required aria-label="Correo para recibir novedades" style="flex: 1; min-width: 220px;" />
+            <button type="submit" class="btn-newsletter">Suscribirme</button>
+          </div>
+          <div class="newsletter-msg" role="status"></div>
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       PIE DE PÁGINA
+       ===================================================== -->
+  <footer class="pie" role="contentinfo">
+    <div class="pie-contenido">
+      <span class="pie-corazon" aria-hidden="true">♥</span>
+      <p class="pie-frase">
+        La ingeniería en software no es solo una carrera, es una oportunidad para crear, innovar y dejar huella.
+      </p>
+
+      <!-- Repetición de redes sociales en el pie de página con Facebook y X -->
+      <div class="nav-redes" style="margin: 1.5rem 0; justify-content: center; display: flex;">
+        <a href="#" class="red-social" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0B1F4B"/></svg>
+        </a>
+        <a href="#" class="red-social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="red-social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="red-social" aria-label="X antes Twitter" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="red-social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+
+    </div>
+    <p class="pie-copy">© 2026 Tu lugar en Software — Equipo ITSON. Todos los derechos reservados.</p>
+    <span class="pie-sticker" aria-hidden="true">¡Sigue, vale la pena!</span>
+  </footer>
+
+  <!-- Botón volver arriba -->
+  <button id="btn-arriba" aria-label="Volver al inicio de la página">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+      stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
+
+  <script src="js/script.js"></script>
+  <script src="js/busqueda.js"></script>
+</body>
+
+</html>
