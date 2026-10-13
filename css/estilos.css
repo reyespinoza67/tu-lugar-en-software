@@ -285,6 +285,18 @@ button {
   animation: flotarSuave 5s ease-in-out infinite 1s;
 }
 
+.header-img-desarrollador {
+  width: 100%;
+  max-width: 220px;
+  height: 155px;
+  object-fit: cover;
+  border-radius: var(--radio-grande);
+  border: 2px solid rgba(185, 163, 227, 0.45);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  animation: flotarSuave 5s ease-in-out infinite 1s;
+  display: block;
+}
+
 /* =====================================================
    BARRA DE NAVEGACIÓN
    ===================================================== */
@@ -2451,5 +2463,188 @@ button {
   color: var(--gris-texto);
   margin-bottom: 1.2rem;
 }
+
+/* =====================================================
+   SISTEMA DE COMENTARIOS (BLOG Y COMUNIDAD GENERAL)
+   ===================================================== */
+.seccion-comentarios {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 2px solid #EAE6FF;
+}
+
+.titulo-comentarios {
+  font-size: 1.35rem;
+  color: var(--azul-marino);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.subtitulo-comentarios {
+  font-size: 0.88rem;
+  color: #666688;
+  margin-bottom: 1.5rem;
+}
+
+.lista-comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.tarjeta-comentario {
+  background: #FAF8FE;
+  border: 1px solid var(--lila-claro);
+  border-radius: var(--radio);
+  padding: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+
+.tarjeta-comentario:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(75, 42, 140, 0.08);
+}
+
+.comentario-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--morado-profundo);
+  color: var(--blanco);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(75, 42, 140, 0.25);
+}
+
+.comentario-cuerpo {
+  flex-grow: 1;
+}
+
+.comentario-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.comentario-autor {
+  font-weight: 700;
+  color: var(--azul-marino);
+  font-size: 0.95rem;
+}
+
+.comentario-rol {
+  background: #EAE6FF;
+  color: var(--morado-profundo);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+}
+
+.comentario-fecha {
+  font-size: 0.78rem;
+  color: #8888AA;
+}
+
+.comentario-texto {
+  font-size: 0.92rem;
+  color: #444466;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.form-comentario-contenedor {
+  background: #FFFFFF;
+  border: 1px solid var(--lila-claro);
+  border-radius: var(--radio-grande);
+  padding: 1.6rem;
+  box-shadow: 0 4px 14px rgba(75, 42, 140, 0.05);
+}
+
+.form-comentario-titulo {
+  font-size: 1.15rem;
+  color: var(--azul-marino);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.grid-campos-comentario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .grid-campos-comentario {
+    grid-template-columns: 1fr;
+  }
+}
+
+.campo-comentario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.campo-comentario label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--azul-marino);
+}
+
+.campo-comentario input,
+.campo-comentario select,
+.campo-comentario textarea {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #CCC5E0;
+  border-radius: var(--radio);
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--gris-texto);
+  background: #FFF;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.campo-comentario input:focus,
+.campo-comentario select:focus,
+.campo-comentario textarea:focus {
+  border-color: var(--morado-profundo);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(106, 61, 175, 0.15);
+}
+
+.btn-publicar-comentario {
+  background: var(--morado-profundo);
+  color: var(--blanco);
+  border: none;
+  border-radius: 20px;
+  padding: 0.7rem 1.6rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background var(--transicion), transform var(--transicion);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-publicar-comentario:hover {
+  background: var(--azul-marino);
+  transform: translateY(-2px);
+}
+
 
 

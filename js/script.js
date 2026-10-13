@@ -509,3 +509,120 @@
   });
 })();
 
+/* =====================================================
+   13. GESTOR DE COMENTARIOS (BLOG Y COMUNIDAD GENERAL)
+   ===================================================== */
+(function iniciarGestorComentarios() {
+  const formularios = document.querySelectorAll('.form-comentario');
+  if (!formularios.length) return;
+
+  formularios.forEach(function (form) {
+    const seccionId = form.getAttribute('data-seccion') || 'general';
+    const contenedorLista = document.querySelector(`.lista-comentarios[data-seccion="${seccionId}"]`);
+    if (!contenedorLista) return;
+
+    try {
+      const guardados = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
+      guardados.forEach(function (coment) {
+        agregarTarjetaComentario(contenedorLista, coment, false);
+      });
+    } catch (e) {
+      console.warn('Error al leer comentarios locales', e);
+    }
+  });
+
+  document.addEventListener('submit', function (e) {
+    const form = e.target.closest('.form-comentario');
+    if (!form) return;
+
+    e.preventDefault();
+    const seccionId = form.getAttribute('data-seccion') || 'general';
+    const inputNombre = form.querySelector('.input-nombre');
+    const selectRol = form.querySelector('.select-rol');
+    const inputMensaje = form.querySelector('.input-mensaje');
+    const contenedorLista = document.querySelector(`.lista-comentarios[data-seccion="${seccionId}"]`);
+
+    if (!inputNombre || !inputMensaje || !contenedorLista) return;
+
+    const nombre = inputNombre.value.trim();
+    const rol = selectRol ? selectRol.value : 'Comunidad';
+    const mensaje = inputMensaje.value.trim();
+
+    if (!nombre || !mensaje) {
+      mostrarToast('Por favor escribe tu nombre y tu comentario');
+      return;
+    }
+
+    const nuevoComentario = {
+      nombre: nombre,
+      rol: rol,
+      fecha: 'Hace un momento',
+      mensaje: mensaje
+    };
+
+    agregarTarjetaComentario(contenedorLista, nuevoComentario, true);
+
+    try {
+      const existentes = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
+      existentes.push(nuevoComentario);
+      localStorage.setItem(`comentarios_${seccionId}`, JSON.stringify(existentes));
+    } catch (err) {
+      console.warn('Error al persistir comentario', err);
+    }
+
+    inputNombre.value = '';
+    inputMensaje.value = '';
+    mostrarToast('Comentario publicado con éxito');
+  });
+
+  function agregarTarjetaComentario(contenedor, datos, animar) {
+    const tarjeta = document.createElement('article');
+    tarjeta.className = 'tarjeta-comentario';
+    if (animar) tarjeta.style.animation = 'fadeInUp 0.4s ease-out';
+
+    const iniciales = (datos.nombre || 'U')
+      .split(' ')
+      .map(function (palabra) { return palabra[0]; })
+      .slice(0, 2)
+      .join('')
+      .toUpperCase();
+
+    tarjeta.innerHTML = `
+      <div class="comentario-avatar" aria-hidden="true">${iniciales}</div>
+      <div class="comentario-cuerpo">
+        <div class="comentario-cabecera">
+          <span class="comentario-autor">${escaparHTML(datos.nombre)}</span>
+          <span class="comentario-rol">${escaparHTML(datos.rol)}</span>
+          <span class="comentario-fecha">${escaparHTML(datos.fecha)}</span>
+        </div>
+        <p class="comentario-texto">${escaparHTML(datos.mensaje)}</p>
+      </div>
+    `;
+
+    contenedor.appendChild(tarjeta);
+  }
+
+  function escaparHTML(texto) {
+    const div = document.createElement('div');
+    div.textContent = texto || '';
+    return div.innerHTML;
+  }
+
+  function mostrarToast(mensaje) {
+    let toast = document.getElementById('toast-notificacion');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'toast-notificacion';
+      toast.className = 'toast-notificacion';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = mensaje;
+    toast.classList.add('visible');
+
+    setTimeout(function () {
+      toast.classList.remove('visible');
+    }, 2500);
+  }
+})();
+
+

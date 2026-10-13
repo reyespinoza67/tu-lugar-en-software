@@ -157,23 +157,23 @@
       tags: ['portafolio', 'empleo', 'github', 'linkedin', 'proyectos', 'profesional']
     },
 
-    /* Contacto */
-    {
-      titulo: 'Formulario de contacto',
-      descripcion: 'Envía tus dudas o comentarios al equipo universitario',
-      url: 'contacto.html#formulario-contacto',
-      tags: ['contacto', 'formulario', 'mensaje', 'dudas', 'preguntas']
-    },
+    /* Comunidad */
     {
       titulo: 'Voces invitadas de la comunidad ITSON',
       descripcion: 'Testimonios reales de egresados y docentes de la carrera',
-      url: 'contacto.html#voces-invitadas',
+      url: 'comunidad.html#voces-invitadas',
       tags: ['voces', 'testimonios', 'egresados', 'docentes', 'experiencias']
     },
     {
-      titulo: 'Equipo de desarrollo del blog',
-      descripcion: 'Conoce a los estudiantes de Ingeniería en Software creadores de este sitio',
-      url: 'contacto.html#equipo-desarrollo',
+      titulo: 'Comentarios generales de la comunidad',
+      descripcion: 'Espacio de diálogo abierto para aspirantes y universitarios',
+      url: 'comunidad.html#comentarios-generales',
+      tags: ['comentarios', 'comunidad', 'opiniones', 'dudas', 'preguntas', 'foro']
+    },
+    {
+      titulo: 'Equipo creador del sitio',
+      descripcion: 'Conoce a los estudiantes de Ingeniería en Software realizadores de este proyecto',
+      url: 'comunidad.html#equipo-desarrollo',
       tags: ['equipo', 'creadores', 'estudiantes', 'itson', 'autores']
     }
   ];
