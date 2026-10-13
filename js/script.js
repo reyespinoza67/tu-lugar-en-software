@@ -180,13 +180,22 @@
 })();
 
 /* =====================================================
-   7. MINI QUIZ DEL CICLO DE VIDA
+   7. MINI QUIZ DEL CICLO DE VIDA CON BASE DE DATOS Y LÍDERES
+   Un solo intento por participante y tabla de líderes en Firebase
    ===================================================== */
 (function iniciarQuiz() {
   const formQuiz = document.getElementById('form-quiz');
-  if (!formQuiz) return;
+  const pantallaInicio = document.getElementById('quiz-pantalla-inicio');
+  const inputNombre = document.getElementById('quiz-nombre-usuario');
+  const btnComenzar = document.getElementById('btn-comenzar-quiz');
+  const btnCalificar = document.getElementById('btn-calificar');
+  const divResultado = document.getElementById('quiz-resultado');
+  const tbodyScores = document.getElementById('tabla-scores-body');
 
-  /* Respuestas correctas por índice de pregunta (0-4) */
+  if (!formQuiz || !btnCalificar) return;
+
+  const FIREBASE_DB_URL = 'https://tu-lugar-en-software-default-rtdb.firebaseio.com';
+
   const respuestasCorrectas = {
     q1: 'b',
     q2: 'c',
@@ -195,76 +204,264 @@
     q5: 'b'
   };
 
-  const btnCalificar = document.getElementById('btn-calificar');
-  const btnReiniciar = document.getElementById('btn-reiniciar');
-  const divResultado = document.getElementById('quiz-resultado');
+  let nombreParticipanteActual = '';
 
-  if (!btnCalificar) return;
+  // 1. Cargar y renderizar la tabla de líderes desde Firebase o almacenamiento local
+  cargarTablaLideres();
 
-  btnCalificar.addEventListener('click', function () {
+  // 2. Comprobar si este usuario ya completó el quiz anteriormente
+  const intentoPrevio = obtenerIntentoPrevio();
+  if (intentoPrevio) {
+    bloquearQuizPorIntentoPrevio(intentoPrevio);
+  }
+
+  // 3. Comenzar el quiz tras validar el nombre
+  if (btnComenzar && inputNombre) {
+    btnComenzar.addEventListener('click', function () {
+      const nombre = inputNombre.value.trim();
+      if (!nombre || nombre.length < 2) {
+        alert('Por favor escribe tu nombre completo antes de iniciar el quiz.');
+        inputNombre.focus();
+        return;
+      }
+      nombreParticipanteActual = nombre;
+      if (pantallaInicio) pantallaInicio.style.display = 'none';
+      formQuiz.style.display = 'block';
+      formQuiz.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    inputNombre.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        btnComenzar.click();
+      }
+    });
+  }
+
+  // 4. Calificar el quiz
+  btnCalificar.addEventListener('click', async function () {
+    // Si ya había completado el quiz, no procesar
+    if (obtenerIntentoPrevio()) {
+      alert('Solo se permite un intento por estudiante.');
+      return;
+    }
+
     let aciertos = 0;
     let respondidas = 0;
 
-    /* Limpia estado anterior */
+    // Limpia estados visuales anteriores
     document.querySelectorAll('.quiz-opcion').forEach(function (op) {
       op.classList.remove('correcta', 'incorrecta');
     });
 
     Object.keys(respuestasCorrectas).forEach(function (nombre) {
       const seleccionada = formQuiz.querySelector(`input[name="${nombre}"]:checked`);
-
       if (seleccionada) {
         respondidas++;
         const opcionEl = seleccionada.closest('.quiz-opcion');
-
         if (seleccionada.value === respuestasCorrectas[nombre]) {
           aciertos++;
-          opcionEl.classList.add('correcta');
+          if (opcionEl) opcionEl.classList.add('correcta');
         } else {
-          opcionEl.classList.add('incorrecta');
+          if (opcionEl) opcionEl.classList.add('incorrecta');
           const correcta = formQuiz.querySelector(
             `input[name="${nombre}"][value="${respuestasCorrectas[nombre]}"]`
           );
-          if (correcta) correcta.closest('.quiz-opcion').classList.add('correcta');
+          if (correcta) {
+            const opCorrectaEl = correcta.closest('.quiz-opcion');
+            if (opCorrectaEl) opCorrectaEl.classList.add('correcta');
+          }
         }
       }
     });
 
     if (respondidas < Object.keys(respuestasCorrectas).length) {
-      divResultado.innerHTML = '<p>Responde todas las preguntas antes de calificar.</p>';
+      divResultado.innerHTML = '<p style="color: #B91C1C; font-weight: 600;">Por favor responde las 5 preguntas antes de calificar tu intento.</p>';
       divResultado.classList.add('visible');
+      divResultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
-    const porcentaje = Math.round((aciertos / Object.keys(respuestasCorrectas).length) * 100);
-    let mensaje = '';
+    // Deshabilitar todas las opciones para que no puedan modificarse
+    formQuiz.querySelectorAll('input[type="radio"]').forEach(function (radio) {
+      radio.disabled = true;
+    });
+    btnCalificar.disabled = true;
+    btnCalificar.style.display = 'none';
 
+    const total = Object.keys(respuestasCorrectas).length;
+    const porcentaje = Math.round((aciertos / total) * 100);
+    const fechaHoy = new Date().toLocaleDateString('es-MX', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+
+    const registroResultado = {
+      nombre: nombreParticipanteActual || 'Estudiante anónimo',
+      aciertos: aciertos,
+      total: total,
+      porcentaje: porcentaje,
+      fecha: fechaHoy,
+      timestamp: Date.now()
+    };
+
+    // Guardar en localStorage para bloquear futuros intentos en este navegador
+    try {
+      localStorage.setItem('quiz_completado', JSON.stringify(registroResultado));
+    } catch (e) {
+      console.warn('Error al guardar estado de quiz en localStorage', e);
+    }
+
+    // Mensaje de retroalimentación
+    let mensaje = '';
     if (porcentaje === 100) {
-      mensaje = '¡Perfecto! Dominaste el ciclo de vida del software. Tienes madera de futuro profesional.';
+      mensaje = 'Dominaste el ciclo de vida del software con excelencia.';
     } else if (porcentaje >= 60) {
-      mensaje = `Muy bien — obtuviste ${aciertos} de 5. Repasa las fases que fallaste y vuelve a intentarlo.`;
+      mensaje = 'Buen trabajo. Tienes bases sólidas del ciclo de vida.';
     } else {
-      mensaje = `Obtuviste ${aciertos} de 5. No te rindas — vuelve a leer las fases y practica de nuevo.`;
+      mensaje = 'Has completado el quiz. Continúa explorando los recursos del blog para fortalecer tus conocimientos.';
     }
 
     divResultado.innerHTML = `
-      <p style="font-size:2rem;margin-bottom:0.5rem;">${porcentaje >= 80 ? '🎉' : porcentaje >= 60 ? '👍' : '💪'}</p>
-      <strong>${aciertos}/5 correctas (${porcentaje}%)</strong>
-      <p style="margin-top:0.5rem;">${mensaje}</p>
+      <div style="background: #FAF8FE; border: 2px solid var(--morado-profundo); padding: 1.5rem; text-align: center;">
+        <p style="font-size: 2.2rem; margin-bottom: 0.5rem;">${porcentaje >= 80 ? '🏆' : porcentaje >= 60 ? '👏' : '💡'}</p>
+        <h3 style="color: var(--azul-marino); margin-bottom: 0.4rem;">${escaparHTML(registroResultado.nombre)}</h3>
+        <p style="font-size: 1.2rem; font-weight: 700; color: var(--morado-profundo);">${aciertos} de ${total} aciertos — ${porcentaje}%</p>
+        <p style="margin-top: 0.5rem; color: #555577;">${mensaje}</p>
+        <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #888899;">Tu resultado ha quedado registrado en la tabla de líderes. No se admiten intentos adicionales.</p>
+      </div>
     `;
     divResultado.classList.add('visible');
     divResultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // Enviar a Firebase Realtime Database
+    await registrarEnFirebase(registroResultado);
+
+    // Recargar tabla de líderes con los datos actualizados
+    await cargarTablaLideres();
   });
 
-  if (btnReiniciar) {
-    btnReiniciar.addEventListener('click', function () {
-      formQuiz.reset();
-      divResultado.classList.remove('visible');
-      divResultado.innerHTML = '';
-      document.querySelectorAll('.quiz-opcion').forEach(function (op) {
-        op.classList.remove('correcta', 'incorrecta');
+  function obtenerIntentoPrevio() {
+    try {
+      const guardado = localStorage.getItem('quiz_completado');
+      return guardado ? JSON.parse(guardado) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function bloquearQuizPorIntentoPrevio(datos) {
+    if (pantallaInicio) pantallaInicio.style.display = 'none';
+    if (formQuiz) formQuiz.style.display = 'none';
+
+    divResultado.innerHTML = `
+      <div style="background: #F4F4F8; border: 2px solid #B9A3E3; padding: 1.5rem; text-align: center; margin-bottom: 2rem;">
+        <p style="font-size: 2rem; margin-bottom: 0.4rem;">🔒</p>
+        <h3 style="color: var(--azul-marino); margin-bottom: 0.3rem;">Quiz ya completado</h3>
+        <p style="font-size: 0.95rem; color: #3D3D5C; margin-bottom: 0.5rem;">
+          <strong>${escaparHTML(datos.nombre || 'Estudiante')}</strong> — obtuviste <strong>${datos.aciertos} de ${datos.total || 5} aciertos</strong> (${datos.porcentaje}%) el ${escaparHTML(datos.fecha || '')}.
+        </p>
+        <p style="font-size: 0.85rem; color: #666688;">
+          Para garantizar la equidad en el ranking, cada participante tiene un solo intento disponible. Consulta tu lugar en la tabla de líderes a continuación.
+        </p>
+      </div>
+    `;
+    divResultado.classList.add('visible');
+  }
+
+  async function registrarEnFirebase(datos) {
+    try {
+      const url = `${FIREBASE_DB_URL}/quiz_scores.json`;
+      await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos)
       });
+    } catch (error) {
+      console.warn('Error al enviar puntaje a Firebase', error);
+      // Guardar en respaldo local si falla la red
+      try {
+        const scoresLocales = JSON.parse(localStorage.getItem('quiz_scores_respaldo') || '[]');
+        scoresLocales.push(datos);
+        localStorage.setItem('quiz_scores_respaldo', JSON.stringify(scoresLocales));
+      } catch (e) {}
+    }
+  }
+
+  async function cargarTablaLideres() {
+    if (!tbodyScores) return;
+
+    let lista = [];
+
+    try {
+      const respuesta = await fetch(`${FIREBASE_DB_URL}/quiz_scores.json`);
+      if (respuesta.ok) {
+        const datos = await respuesta.json();
+        if (datos && typeof datos === 'object') {
+          lista = Object.keys(datos).map(function (k) { return datos[k]; });
+        }
+      }
+    } catch (e) {
+      console.warn('Error al conectar con Firebase leaderboard', e);
+    }
+
+    // Agregar registros de respaldo local si existieran
+    try {
+      const respaldo = JSON.parse(localStorage.getItem('quiz_scores_respaldo') || '[]');
+      respaldo.forEach(function (r) {
+        const yaExiste = lista.some(function (item) {
+          return item.nombre === r.nombre && item.timestamp === r.timestamp;
+        });
+        if (!yaExiste) lista.push(r);
+      });
+    } catch (e) {}
+
+    // Semillas demostrativas si la base de datos estuviera vacía al inicio
+    if (lista.length === 0) {
+      lista = [
+        { nombre: 'Sofía Valenzuela', aciertos: 5, total: 5, porcentaje: 100, fecha: '12 de oct. de 2026', timestamp: 1 },
+        { nombre: 'Carlos Mendoza', aciertos: 5, total: 5, porcentaje: 100, fecha: '12 de oct. de 2026', timestamp: 2 },
+        { nombre: 'Mariana Duarte', aciertos: 4, total: 5, porcentaje: 80, fecha: '11 de oct. de 2026', timestamp: 3 },
+        { nombre: 'Jorge Félix', aciertos: 4, total: 5, porcentaje: 80, fecha: '10 de oct. de 2026', timestamp: 4 },
+        { nombre: 'Valeria Bojórquez', aciertos: 3, total: 5, porcentaje: 60, fecha: '9 de oct. de 2026', timestamp: 5 }
+      ];
+    }
+
+    // Ordenar de mayor a menor puntaje, luego por timestamp más antiguo
+    lista.sort(function (a, b) {
+      if ((b.aciertos || 0) !== (a.aciertos || 0)) {
+        return (b.aciertos || 0) - (a.aciertos || 0);
+      }
+      return (a.timestamp || 0) - (b.timestamp || 0);
     });
+
+    // Renderizar los 10 mejores
+    const top10 = lista.slice(0, 10);
+    tbodyScores.innerHTML = '';
+
+    top10.forEach(function (item, index) {
+      const tr = document.createElement('tr');
+      let medalla = '';
+      if (index === 0) medalla = '🥇 1º';
+      else if (index === 1) medalla = '🥈 2º';
+      else if (index === 2) medalla = '🥉 3º';
+      else medalla = `${index + 1}º`;
+
+      tr.innerHTML = `
+        <td style="font-weight: 700; color: var(--morado-profundo);">${medalla}</td>
+        <td style="font-weight: 600; color: var(--azul-marino);">${escaparHTML(item.nombre || 'Participante')}</td>
+        <td><span style="display: inline-block; background: #EDE9FE; color: #4B2A8C; padding: 0.2rem 0.6rem; font-weight: 700; font-size: 0.85rem;">${item.aciertos || 0}/5 (${item.porcentaje || 0}%)</span></td>
+        <td style="color: #666688; font-size: 0.82rem;">${escaparHTML(item.fecha || 'Reciente')}</td>
+      `;
+      tbodyScores.appendChild(tr);
+    });
+  }
+
+  function escaparHTML(texto) {
+    const div = document.createElement('div');
+    div.textContent = texto || '';
+    return div.innerHTML;
   }
 })();
 
@@ -337,15 +534,19 @@
    ===================================================== */
 (function iniciarModalMapa() {
   const trigger = document.getElementById('mapa-trigger');
+  const triggerBtn = document.getElementById('mapa-trigger-btn');
   const modal = document.getElementById('modal-mapa');
   const cerrar = document.getElementById('modal-cerrar');
 
-  if (!trigger || !modal) return;
+  if (!modal) return;
 
-  trigger.addEventListener('click', function () {
+  function abrirModal() {
     modal.classList.add('visible');
     document.body.style.overflow = 'hidden';
-  });
+  }
+
+  if (trigger) trigger.addEventListener('click', abrirModal);
+  if (triggerBtn) triggerBtn.addEventListener('click', abrirModal);
 
   function cerrarModal() {
     modal.classList.remove('visible');
