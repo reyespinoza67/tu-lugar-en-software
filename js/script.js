@@ -547,7 +547,8 @@
 
   async function sincronizarConNube(seccionId, contenedorLista, comentariosLocales) {
     try {
-      const respuesta = await fetch(`${FIREBASE_DB_URL}/comentarios/${seccionId}.json`);
+      const dbUrl = FIREBASE_DB_URL.replace(/\/+$/, '');
+      const respuesta = await fetch(`${dbUrl}/comentarios/${seccionId}.json`);
       if (!respuesta.ok) return;
       const datosNube = await respuesta.json();
       if (datosNube && typeof datosNube === 'object') {
@@ -556,14 +557,26 @@
         });
 
         if (listaRemota.length > 0) {
+          listaRemota.sort(function (a, b) {
+            return (a.timestamp || 0) - (b.timestamp || 0);
+          });
+
           contenedorLista.innerHTML = '';
           listaRemota.forEach(function (comentarioRemoto) {
             agregarTarjetaComentario(contenedorLista, comentarioRemoto, false);
           });
+
+          try {
+            localStorage.setItem(`comentarios_${seccionId}`, JSON.stringify(listaRemota));
+          } catch (e) {}
+        } else {
+          verificarEstadoVacio(contenedorLista);
         }
+      } else {
+        verificarEstadoVacio(contenedorLista);
       }
     } catch (errorRed) {
-      // Si la base remota no está activa o no hay conexión se mantiene la versión local sin alertas
+      verificarEstadoVacio(contenedorLista);
     }
   }
 
@@ -625,7 +638,8 @@
 
   async function enviarANube(seccionId, comentario) {
     try {
-      await fetch(`${FIREBASE_DB_URL}/comentarios/${seccionId}.json`, {
+      const dbUrl = FIREBASE_DB_URL.replace(/\/+$/, '');
+      await fetch(`${dbUrl}/comentarios/${seccionId}.json`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(comentario)
