@@ -162,7 +162,9 @@ button {
    HERO / CABECERA
    ===================================================== */
 .hero {
-  background: var(--gradiente-hero);
+  background:
+    linear-gradient(135deg, rgba(11, 31, 75, 0.92) 0%, rgba(45, 26, 128, 0.88) 50%, rgba(26, 10, 62, 0.94) 100%),
+    url('../img/header-desarrollador.jpg') center/cover no-repeat;
   min-height: 420px;
   position: relative;
   overflow: hidden;
@@ -287,14 +289,21 @@ button {
 
 .header-img-desarrollador {
   width: 100%;
-  max-width: 220px;
-  height: 155px;
+  max-width: 290px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   object-fit: cover;
   border-radius: var(--radio-grande);
-  border: 2px solid rgba(185, 163, 227, 0.45);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(185, 163, 227, 0.6);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(79, 195, 247, 0.3);
   animation: flotarSuave 5s ease-in-out infinite 1s;
   display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-img-desarrollador:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 35px rgba(79, 195, 247, 0.5);
 }
 
 /* =====================================================
@@ -2509,6 +2518,32 @@ button {
 .tarjeta-comentario:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(75, 42, 140, 0.08);
+}
+
+.comentario-vacio {
+  background: rgba(244, 240, 253, 0.7);
+  border: 1px dashed rgba(124, 92, 191, 0.4);
+  border-radius: var(--radio);
+  padding: 1.6rem;
+  text-align: center;
+  color: #555577;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.comentario-vacio-icono {
+  width: 32px;
+  height: 32px;
+  color: var(--lila);
+  opacity: 0.85;
+}
+
+.comentario-vacio p {
+  margin: 0;
+  max-width: 480px;
 }
 
 .comentario-avatar {

@@ -510,26 +510,62 @@
 })();
 
 /* =====================================================
-   13. GESTOR DE COMENTARIOS (BLOG Y COMUNIDAD GENERAL)
+   13. GESTOR DE COMENTARIOS FUNCIONAL
+   Soporte con Firebase Realtime Database y respaldo local
    ===================================================== */
 (function iniciarGestorComentarios() {
   const formularios = document.querySelectorAll('.form-comentario');
   if (!formularios.length) return;
+
+  // Base de datos en la nube (Firebase Realtime Database REST API)
+  // El usuario puede configurar aquí la URL de su proyecto Firebase gratuito en 1 minuto
+  const FIREBASE_DB_URL = 'https://tu-lugar-en-software-default-rtdb.firebaseio.com';
 
   formularios.forEach(function (form) {
     const seccionId = form.getAttribute('data-seccion') || 'general';
     const contenedorLista = document.querySelector(`.lista-comentarios[data-seccion="${seccionId}"]`);
     if (!contenedorLista) return;
 
+    // 1. Cargar comentarios locales inmediatos
+    let comentariosLocales = [];
     try {
-      const guardados = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
-      guardados.forEach(function (coment) {
+      comentariosLocales = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
+      comentariosLocales.forEach(function (coment) {
         agregarTarjetaComentario(contenedorLista, coment, false);
       });
     } catch (e) {
-      console.warn('Error al leer comentarios locales', e);
+      console.warn('Error al leer almacenamiento local', e);
     }
+
+    if (comentariosLocales.length === 0) {
+      verificarEstadoVacio(contenedorLista);
+    }
+
+    // 2. Intentar sincronizar con la base de datos en la nube de forma asíncrona
+    sincronizarConNube(seccionId, contenedorLista, comentariosLocales);
   });
+
+  async function sincronizarConNube(seccionId, contenedorLista, comentariosLocales) {
+    try {
+      const respuesta = await fetch(`${FIREBASE_DB_URL}/comentarios/${seccionId}.json`);
+      if (!respuesta.ok) return;
+      const datosNube = await respuesta.json();
+      if (datosNube && typeof datosNube === 'object') {
+        const listaRemota = Object.keys(datosNube).map(function (llave) {
+          return datosNube[llave];
+        });
+
+        if (listaRemota.length > 0) {
+          contenedorLista.innerHTML = '';
+          listaRemota.forEach(function (comentarioRemoto) {
+            agregarTarjetaComentario(contenedorLista, comentarioRemoto, false);
+          });
+        }
+      }
+    } catch (errorRed) {
+      // Si la base remota no está activa o no hay conexión se mantiene la versión local sin alertas
+    }
+  }
 
   document.addEventListener('submit', function (e) {
     const form = e.target.closest('.form-comentario');
@@ -549,39 +585,83 @@
     const mensaje = inputMensaje.value.trim();
 
     if (!nombre || !mensaje) {
-      mostrarToast('Por favor escribe tu nombre y tu comentario');
+      mostrarToast('Por favor escribe tu nombre y tu mensaje antes de enviar');
       return;
     }
+
+    const fechaHoy = new Date().toLocaleDateString('es-MX', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
 
     const nuevoComentario = {
       nombre: nombre,
       rol: rol,
-      fecha: 'Hace un momento',
-      mensaje: mensaje
+      fecha: fechaHoy,
+      mensaje: mensaje,
+      timestamp: Date.now()
     };
 
+    // Renderizar en pantalla inmediatamente con animación
     agregarTarjetaComentario(contenedorLista, nuevoComentario, true);
 
+    // Guardar en almacenamiento local
     try {
       const existentes = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
       existentes.push(nuevoComentario);
       localStorage.setItem(`comentarios_${seccionId}`, JSON.stringify(existentes));
     } catch (err) {
-      console.warn('Error al persistir comentario', err);
+      console.warn('Error al guardar comentario local', err);
     }
+
+    // Enviar a la base de datos en la nube
+    enviarANube(seccionId, nuevoComentario);
 
     inputNombre.value = '';
     inputMensaje.value = '';
     mostrarToast('Comentario publicado con éxito');
   });
 
+  async function enviarANube(seccionId, comentario) {
+    try {
+      await fetch(`${FIREBASE_DB_URL}/comentarios/${seccionId}.json`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(comentario)
+      });
+    } catch (errorNube) {
+      // El comentario ya está seguro en el almacenamiento local
+    }
+  }
+
+  function verificarEstadoVacio(contenedor) {
+    if (!contenedor.querySelector('.tarjeta-comentario') && !contenedor.querySelector('.comentario-vacio')) {
+      const vacio = document.createElement('div');
+      vacio.className = 'comentario-vacio';
+      vacio.innerHTML = `
+        <svg class="comentario-vacio-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <p>Aún no hay comentarios publicados en este espacio. ¡Sé la primera persona en compartir tu opinión!</p>
+      `;
+      contenedor.appendChild(vacio);
+    }
+  }
+
   function agregarTarjetaComentario(contenedor, datos, animar) {
+    const estadoVacio = contenedor.querySelector('.comentario-vacio');
+    if (estadoVacio) {
+      estadoVacio.remove();
+    }
+
     const tarjeta = document.createElement('article');
     tarjeta.className = 'tarjeta-comentario';
     if (animar) tarjeta.style.animation = 'fadeInUp 0.4s ease-out';
 
     const iniciales = (datos.nombre || 'U')
-      .split(' ')
+      .trim()
+      .split(/\s+/)
       .map(function (palabra) { return palabra[0]; })
       .slice(0, 2)
       .join('')
