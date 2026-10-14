@@ -729,42 +729,196 @@
 })();
 
 /* =====================================================
-   13. GESTOR DE COMENTARIOS FUNCIONAL
+   13. GESTOR DE COMENTARIOS FUNCIONAL Y MURO UNIFICADO
    Soporte con Firebase Realtime Database y respaldo local
    ===================================================== */
 (function iniciarGestorComentarios() {
   const formularios = document.querySelectorAll('.form-comentario');
-  if (!formularios.length) return;
+  const contenedores = document.querySelectorAll('.lista-comentarios');
+  if (!formularios.length && !contenedores.length) return;
 
   // Base de datos en la nube (Firebase Realtime Database REST API)
-  // El usuario puede configurar aquí la URL de su proyecto Firebase gratuito en 1 minuto
   const FIREBASE_DB_URL = 'https://tu-lugar-en-software-default-rtdb.firebaseio.com';
 
-  formularios.forEach(function (form) {
-    const seccionId = form.getAttribute('data-seccion') || 'general';
-    const contenedorLista = document.querySelector(`.lista-comentarios[data-seccion="${seccionId}"]`);
-    if (!contenedorLista) return;
-
-    // 1. Cargar comentarios locales inmediatos
-    let comentariosLocales = [];
-    try {
-      comentariosLocales = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
-      comentariosLocales.forEach(function (coment) {
-        agregarTarjetaComentario(contenedorLista, coment, false);
-      });
-    } catch (e) {
-      console.warn('Error al leer almacenamiento local', e);
+  const DICCIONARIO_SECCIONES = {
+    'general': {
+      titulo: 'Comunidad general',
+      url: 'comunidad.html#comentarios-generales'
+    },
+    'itson-carrera': {
+      titulo: '¿Por qué estudiar Software en ITSON?',
+      url: 'blog.html#itson-carrera'
+    },
+    'como-nace-app': {
+      titulo: 'De la idea a la pantalla — Cómo nace una app',
+      url: 'blog.html#como-nace-app'
+    },
+    'aprende-semestre': {
+      titulo: 'Aprende semestre a semestre',
+      url: 'blog.html#aprende-semestre'
+    },
+    'mitos-programacion': {
+      titulo: '5 mitos sobre estudiar programación',
+      url: 'blog.html#mitos-programacion'
+    },
+    'frontend-backend': {
+      titulo: 'Frontend vs Backend',
+      url: 'blog.html#frontend-backend'
+    },
+    'primer-ano-universidad': {
+      titulo: 'Primer año de universidad',
+      url: 'blog.html#primer-ano-universidad'
+    },
+    'inteligencia-artificial': {
+      titulo: 'La inteligencia artificial en software',
+      url: 'blog.html#inteligencia-artificial'
+    },
+    'construir-portafolio': {
+      titulo: 'Cómo armar tu primer portafolio',
+      url: 'blog.html#construir-portafolio'
     }
+  };
 
-    if (comentariosLocales.length === 0) {
-      verificarEstadoVacio(contenedorLista);
+  contenedores.forEach(function (contenedorLista) {
+    const seccionId = contenedorLista.getAttribute('data-seccion') || 'general';
+
+    if (seccionId === 'todos') {
+      // 1. Cargar comentarios locales consolidados de todas las secciones
+      cargarMuroUnificadoLocal(contenedorLista);
+      // 2. Sincronizar todo desde Firebase
+      sincronizarMuroUnificadoNube(contenedorLista);
+    } else {
+      // Sección individual (por artículo o tema particular)
+      let comentariosLocales = [];
+      try {
+        comentariosLocales = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
+        comentariosLocales.forEach(function (coment) {
+          agregarTarjetaComentario(contenedorLista, coment, false, false);
+        });
+      } catch (e) {
+        console.warn('Error al leer almacenamiento local', e);
+      }
+
+      if (comentariosLocales.length === 0) {
+        verificarEstadoVacio(contenedorLista);
+      }
+
+      sincronizarConNube(seccionId, contenedorLista);
     }
-
-    // 2. Intentar sincronizar con la base de datos en la nube de forma asíncrona
-    sincronizarConNube(seccionId, contenedorLista, comentariosLocales);
   });
 
-  async function sincronizarConNube(seccionId, contenedorLista, comentariosLocales) {
+  // Carga inicial local para el muro unificado
+  function cargarMuroUnificadoLocal(contenedorLista) {
+    let todos = [];
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const clave = localStorage.key(i);
+        if (clave && clave.indexOf('comentarios_') === 0) {
+          const sec = clave.replace('comentarios_', '');
+          if (sec === 'todos') continue;
+          const items = JSON.parse(localStorage.getItem(clave) || '[]');
+          if (Array.isArray(items)) {
+            items.forEach(function (item) {
+              if (item && typeof item === 'object') {
+                todos.push({
+                  nombre: item.nombre,
+                  rol: item.rol,
+                  fecha: item.fecha,
+                  mensaje: item.mensaje,
+                  timestamp: item.timestamp || 0,
+                  seccionKey: item.seccionKey || sec
+                });
+              }
+            });
+          }
+        }
+      }
+
+      // Ordenar por más reciente primero
+      todos.sort(function (a, b) {
+        return (b.timestamp || 0) - (a.timestamp || 0);
+      });
+
+      // Evitar duplicados por contenido y fecha
+      const mapa = new Map();
+      todos.forEach(function (c) {
+        const idClave = (c.timestamp || 0) + '|' + (c.nombre || '') + '|' + (c.mensaje || '');
+        if (!mapa.has(idClave)) {
+          mapa.set(idClave, c);
+        }
+      });
+
+      const unicos = Array.from(mapa.values());
+      contenedorLista.innerHTML = '';
+      if (unicos.length > 0) {
+        unicos.forEach(function (c) {
+          agregarTarjetaComentario(contenedorLista, c, false, true);
+        });
+      } else {
+        verificarEstadoVacio(contenedorLista);
+      }
+    } catch (err) {
+      console.warn('Error al compilar muro unificado local', err);
+      verificarEstadoVacio(contenedorLista);
+    }
+  }
+
+  // Sincronización en la nube para el muro unificado (todos los comentarios)
+  async function sincronizarMuroUnificadoNube(contenedorLista) {
+    try {
+      const dbUrl = FIREBASE_DB_URL.replace(/\/+$/, '');
+      const respuesta = await fetch(`${dbUrl}/comentarios.json`);
+      if (!respuesta.ok) return;
+      const datosNube = await respuesta.json();
+      if (!datosNube || typeof datosNube !== 'object') {
+        verificarEstadoVacio(contenedorLista);
+        return;
+      }
+
+      let todos = [];
+      for (const seccionKey in datosNube) {
+        const coleccion = datosNube[seccionKey];
+        if (coleccion && typeof coleccion === 'object') {
+          for (const idPush in coleccion) {
+            const com = coleccion[idPush];
+            if (com && typeof com === 'object') {
+              todos.push({
+                nombre: com.nombre,
+                rol: com.rol,
+                fecha: com.fecha,
+                mensaje: com.mensaje,
+                timestamp: com.timestamp || 0,
+                seccionKey: com.seccionKey || seccionKey
+              });
+            }
+          }
+        }
+      }
+
+      if (todos.length > 0) {
+        // Ordenar más reciente primero
+        todos.sort(function (a, b) {
+          return (b.timestamp || 0) - (a.timestamp || 0);
+        });
+
+        contenedorLista.innerHTML = '';
+        todos.forEach(function (comentarioRemoto) {
+          agregarTarjetaComentario(contenedorLista, comentarioRemoto, false, true);
+        });
+
+        // Reaplicar filtro activo si existe
+        aplicarFiltroActivo();
+      } else {
+        verificarEstadoVacio(contenedorLista);
+      }
+    } catch (errorRed) {
+      console.warn('Fallo al conectar con la base de datos de comentarios', errorRed);
+      verificarEstadoVacio(contenedorLista);
+    }
+  }
+
+  // Sincronización en la nube para sección individual
+  async function sincronizarConNube(seccionId, contenedorLista) {
     try {
       const dbUrl = FIREBASE_DB_URL.replace(/\/+$/, '');
       const respuesta = await fetch(`${dbUrl}/comentarios/${seccionId}.json`);
@@ -776,13 +930,14 @@
         });
 
         if (listaRemota.length > 0) {
+          // Más reciente primero
           listaRemota.sort(function (a, b) {
-            return (a.timestamp || 0) - (b.timestamp || 0);
+            return (b.timestamp || 0) - (a.timestamp || 0);
           });
 
           contenedorLista.innerHTML = '';
           listaRemota.forEach(function (comentarioRemoto) {
-            agregarTarjetaComentario(contenedorLista, comentarioRemoto, false);
+            agregarTarjetaComentario(contenedorLista, comentarioRemoto, false, false);
           });
 
           try {
@@ -799,18 +954,22 @@
     }
   }
 
+  // Enviar comentarios
   document.addEventListener('submit', function (e) {
     const form = e.target.closest('.form-comentario');
     if (!form) return;
 
     e.preventDefault();
-    const seccionId = form.getAttribute('data-seccion') || 'general';
+    const seccionForm = form.getAttribute('data-seccion') || 'general';
+    const selectDestino = form.querySelector('.select-destino');
+    const seccionDestino = (seccionForm === 'todos' && selectDestino) ? selectDestino.value : seccionForm;
+
     const inputNombre = form.querySelector('.input-nombre');
     const selectRol = form.querySelector('.select-rol');
     const inputMensaje = form.querySelector('.input-mensaje');
-    const contenedorLista = document.querySelector(`.lista-comentarios[data-seccion="${seccionId}"]`);
+    const contenedorLista = document.querySelector(`.lista-comentarios[data-seccion="${seccionForm}"]`);
 
-    if (!inputNombre || !inputMensaje || !contenedorLista) return;
+    if (!inputNombre || !inputMensaje) return;
 
     const nombre = inputNombre.value.trim();
     const rol = selectRol ? selectRol.value : 'Comunidad';
@@ -832,23 +991,26 @@
       rol: rol,
       fecha: fechaHoy,
       mensaje: mensaje,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      seccionKey: seccionDestino
     };
 
-    // Renderizar en pantalla inmediatamente con animación
-    agregarTarjetaComentario(contenedorLista, nuevoComentario, true);
+    // Renderizar en pantalla inmediatamente arriba con animación
+    if (contenedorLista) {
+      agregarTarjetaComentario(contenedorLista, nuevoComentario, true, seccionForm === 'todos');
+    }
 
-    // Guardar en almacenamiento local
+    // Guardar en almacenamiento local bajo la sección destino
     try {
-      const existentes = JSON.parse(localStorage.getItem(`comentarios_${seccionId}`) || '[]');
-      existentes.push(nuevoComentario);
-      localStorage.setItem(`comentarios_${seccionId}`, JSON.stringify(existentes));
+      const existentes = JSON.parse(localStorage.getItem(`comentarios_${seccionDestino}`) || '[]');
+      existentes.unshift(nuevoComentario);
+      localStorage.setItem(`comentarios_${seccionDestino}`, JSON.stringify(existentes));
     } catch (err) {
       console.warn('Error al guardar comentario local', err);
     }
 
-    // Enviar a la base de datos en la nube
-    enviarANube(seccionId, nuevoComentario);
+    // Enviar a la base de datos en la nube en su rama de sección
+    enviarANube(seccionDestino, nuevoComentario);
 
     inputNombre.value = '';
     inputMensaje.value = '';
@@ -882,7 +1044,7 @@
     }
   }
 
-  function agregarTarjetaComentario(contenedor, datos, animar) {
+  function agregarTarjetaComentario(contenedor, datos, animar, mostrarOrigen) {
     const estadoVacio = contenedor.querySelector('.comentario-vacio');
     if (estadoVacio) {
       estadoVacio.remove();
@@ -890,6 +1052,9 @@
 
     const tarjeta = document.createElement('article');
     tarjeta.className = 'tarjeta-comentario';
+    const origenKey = datos.seccionKey || 'general';
+    tarjeta.setAttribute('data-seccion-origen', origenKey);
+
     if (animar) tarjeta.style.animation = 'fadeInUp 0.4s ease-out';
 
     const iniciales = (datos.nombre || 'U')
@@ -900,6 +1065,20 @@
       .join('')
       .toUpperCase();
 
+    let htmlBadgeOrigen = '';
+    if (mostrarOrigen) {
+      const infoSeccion = DICCIONARIO_SECCIONES[origenKey] || {
+        titulo: origenKey,
+        url: 'blog.html#' + origenKey
+      };
+      htmlBadgeOrigen = `
+        <a href="${infoSeccion.url}" class="badge-origen-comentario" title="Ir al artículo original">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          <span>En ${escaparHTML(infoSeccion.titulo)}</span>
+        </a>
+      `;
+    }
+
     tarjeta.innerHTML = `
       <div class="comentario-avatar" aria-hidden="true">${iniciales}</div>
       <div class="comentario-cuerpo">
@@ -909,10 +1088,48 @@
           <span class="comentario-fecha">${escaparHTML(datos.fecha)}</span>
         </div>
         <p class="comentario-texto">${escaparHTML(datos.mensaje)}</p>
+        ${htmlBadgeOrigen}
       </div>
     `;
 
-    contenedor.appendChild(tarjeta);
+    if (animar && contenedor.firstChild) {
+      contenedor.insertBefore(tarjeta, contenedor.firstChild);
+    } else {
+      contenedor.appendChild(tarjeta);
+    }
+  }
+
+  // Interacción de botones de filtro del muro unificado
+  const contenedorFiltros = document.getElementById('filtro-muro-comentarios');
+  if (contenedorFiltros) {
+    contenedorFiltros.addEventListener('click', function (e) {
+      const btn = e.target.closest('.btn-filtro-comentario');
+      if (!btn) return;
+
+      contenedorFiltros.querySelectorAll('.btn-filtro-comentario').forEach(function (b) {
+        b.classList.remove('activo');
+      });
+      btn.classList.add('activo');
+
+      aplicarFiltroActivo();
+    });
+  }
+
+  function aplicarFiltroActivo() {
+    const contenedorFiltros = document.getElementById('filtro-muro-comentarios');
+    if (!contenedorFiltros) return;
+    const btnActivo = contenedorFiltros.querySelector('.btn-filtro-comentario.activo');
+    const filtro = btnActivo ? (btnActivo.getAttribute('data-filtro') || 'todos') : 'todos';
+
+    const tarjetas = document.querySelectorAll('.lista-comentarios[data-seccion="todos"] .tarjeta-comentario');
+    tarjetas.forEach(function (tarjeta) {
+      const origen = tarjeta.getAttribute('data-seccion-origen') || 'general';
+      if (filtro === 'todos' || origen === filtro) {
+        tarjeta.style.display = 'flex';
+      } else {
+        tarjeta.style.display = 'none';
+      }
+    });
   }
 
   function escaparHTML(texto) {

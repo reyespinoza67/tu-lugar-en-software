@@ -3165,6 +3165,35 @@ img, video, iframe, svg {
     width: 100% !important;
     max-width: 100% !important;
   }
+
+  /* Sección bienvenida en tablets */
+  .bienvenida-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.2rem !important;
+    text-align: center;
+  }
+
+  .bienvenida-izq {
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+    min-height: auto !important;
+  }
+
+  .bienvenida-centro {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .bienvenida-der {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-left: none !important;
+    border-top: 2px solid var(--lila-claro) !important;
+    padding-left: 0 !important;
+    padding-top: 1.8rem !important;
+  }
 }
 
 /* Pantallas de teléfono y tablets pequeñas (<= 768px) */
@@ -3322,7 +3351,7 @@ img, video, iframe, svg {
   .tarjetas-grid,
   .banner-comentarios-grid,
   .grid-campos-comentario,
-  .columnas-bienvenida {
+  .bienvenida-grid {
     display: flex !important;
     flex-direction: column !important;
     grid-template-columns: 1fr !important;
@@ -3330,6 +3359,55 @@ img, video, iframe, svg {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  /* Sección bienvenida en móviles */
+  .seccion-bienvenida {
+    padding: 2.2rem 0 !important;
+  }
+
+  .bienvenida-izq {
+    width: 100% !important;
+    max-width: 260px !important;
+    margin: 0 auto !important;
+    min-height: auto !important;
+  }
+
+  .bienvenida-izq img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+
+  .bienvenida-centro {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .titulo-bienvenida {
+    font-size: 2rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .bienvenida-centro p {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+  }
+
+  .bienvenida-der {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-left: none !important;
+    border-top: 2px solid var(--lila-claro) !important;
+    padding-left: 0 !important;
+    padding-top: 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.9rem !important;
   }
 
   /* Hero cabecera */
@@ -3511,6 +3589,14 @@ img, video, iframe, svg {
     font-size: 1.3rem !important;
   }
 
+  .bienvenida-grid {
+    padding: 0 0.5rem !important;
+  }
+
+  .titulo-bienvenida {
+    font-size: 1.75rem !important;
+  }
+
   .fase-img-contenedor,
   .rol-img-banner {
     height: 160px !important;
@@ -3532,6 +3618,69 @@ img, video, iframe, svg {
   .bloque-curricular {
     padding: 1rem !important;
   }
+}
+
+/* =====================================================
+   MURO UNIFICADO DE COMENTARIOS: BADGE DE ORIGEN Y FILTROS
+   ===================================================== */
+.badge-origen-comentario {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #F3EDFC;
+  color: var(--morado-profundo);
+  border: 1px solid var(--lila-claro);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 0px !important;
+  text-decoration: none;
+  margin-top: 0.6rem;
+  width: fit-content;
+  box-shadow: none !important;
+  transition: background var(--transicion), color var(--transicion);
+}
+
+.badge-origen-comentario:hover {
+  background: var(--morado-profundo);
+  color: #FFFFFF;
+}
+
+.filtro-comentarios-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 1.2rem 0;
+  padding: 0.2rem 0;
+}
+
+.btn-filtro-comentario {
+  background: #FFFFFF;
+  color: var(--azul-marino);
+  border: 1px solid var(--lila-claro);
+  border-radius: 0px !important;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transicion);
+  box-shadow: none !important;
+}
+
+.btn-filtro-comentario:hover {
+  background: #F0EAFA;
+  border-color: var(--morado-profundo);
+}
+
+.btn-filtro-comentario.activo {
+  background: var(--morado-profundo);
+  color: #FFFFFF;
+  border-color: var(--morado-profundo);
+}
+
+.campo-destino-comentario select {
+  font-weight: 600;
+  color: var(--azul-marino);
 }
 
 

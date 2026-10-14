@@ -162,7 +162,7 @@
           <button type="button" class="btn-toggle-sub" aria-label="Desplegar submenú Comunidad" aria-expanded="false">▾</button>
           <ul class="nav-submenu">
             <li><a href="comunidad.html#voces-invitadas">Voces invitadas</a></li>
-            <li><a href="comunidad.html#comentarios-generales">Comentarios generales</a></li>
+            <li><a href="comunidad.html#comentarios-generales">Muro de comentarios</a></li>
             <li><a href="comunidad.html#equipo-desarrollo">Equipo creador</a></li>
           </ul>
         </li>
@@ -283,23 +283,34 @@
       </div>
     </section>
 
-    <!-- COMENTARIOS GENERALES DE LA COMUNIDAD -->
+    <!-- MURO UNIFICADO DE COMENTARIOS DE LA COMUNIDAD Y DEL BLOG -->
     <section class="reveal" id="comentarios-generales" style="margin-top: 4.5rem;">
       <div class="encabezado-seccion">
-        <p class="subtitulo-seccion">Punto de encuentro</p>
-        <h2 class="titulo-seccion">Comentarios generales de la comunidad</h2>
+        <p class="subtitulo-seccion">Muro unificado de comentarios</p>
+        <h2 class="titulo-seccion">Muro de comentarios del blog y la comunidad</h2>
         <p class="intro-texto">
-          Comparte tus preguntas sobre la carrera, déjanos tu saludo o conversa abiertamente con estudiantes y aspirantes a Ingeniería en Software en ITSON.
+          En este espacio se concentran todos los comentarios y preguntas publicados en los distintos artículos del blog y en nuestro foro abierto. Puedes leer lo que la comunidad ha compartido en cada tema o publicar tu propia aportación seleccionando el artículo de tu interés.
         </p>
       </div>
 
-      <!-- Lista de comentarios generales dinámica -->
-      <div class="lista-comentarios" data-seccion="general" style="margin-top: 2rem;"></div>
+      <!-- Filtros por tema o artículo del blog -->
+      <div class="filtro-comentarios-contenedor" id="filtro-muro-comentarios" role="tablist" aria-label="Filtrar comentarios por artículo">
+        <button type="button" class="btn-filtro-comentario activo" data-filtro="todos">Todos los comentarios</button>
+        <button type="button" class="btn-filtro-comentario" data-filtro="general">Comunidad general</button>
+        <button type="button" class="btn-filtro-comentario" data-filtro="itson-carrera">ITSON y la carrera</button>
+        <button type="button" class="btn-filtro-comentario" data-filtro="como-nace-app">Cómo nace una app</button>
+        <button type="button" class="btn-filtro-comentario" data-filtro="aprende-semestre">Semestre a semestre</button>
+        <button type="button" class="btn-filtro-comentario" data-filtro="mitos-programacion">Mitos de programación</button>
+      </div>
 
-      <!-- Formulario para publicar comentario general -->
+      <!-- Lista de comentarios unificada dinámica -->
+      <div class="lista-comentarios" data-seccion="todos" style="margin-top: 1.5rem;"></div>
+
+      <!-- Formulario para publicar comentario en el muro -->
       <div class="form-comentario-contenedor">
-        <h3 class="form-comentario-titulo">Deja tu comentario o pregunta</h3>
-        <form class="form-comentario" data-seccion="general">
+        <h3 class="form-comentario-titulo">Publica un comentario en el muro</h3>
+        <p style="font-size: 0.88rem; color: #555577; margin-bottom: 1.2rem;">Tu comentario se publicará en tiempo real en este muro y quedará visible también en el artículo que elijas.</p>
+        <form class="form-comentario" data-seccion="todos">
           <div class="grid-campos-comentario">
             <div class="campo-comentario">
               <label for="comentario-nombre-general">Nombre completo</label>
@@ -316,6 +327,21 @@
                 <option value="Comunidad General">Comunidad General</option>
               </select>
             </div>
+
+            <div class="campo-comentario campo-destino-comentario">
+              <label for="comentario-destino-general">Publicar en el artículo o tema</label>
+              <select id="comentario-destino-general" class="select-destino">
+                <option value="general">Muro general de la comunidad</option>
+                <option value="itson-carrera">Blog — ¿Por qué estudiar Software en ITSON?</option>
+                <option value="como-nace-app">Blog — De la idea a la pantalla, cómo nace una app</option>
+                <option value="aprende-semestre">Blog — Aprende semestre a semestre</option>
+                <option value="mitos-programacion">Blog — 5 mitos sobre estudiar programación</option>
+                <option value="frontend-backend">Blog — Frontend vs Backend</option>
+                <option value="primer-ano-universidad">Blog — Primer año de universidad</option>
+                <option value="inteligencia-artificial">Blog — La inteligencia artificial en software</option>
+                <option value="construir-portafolio">Blog — Cómo armar tu primer portafolio</option>
+              </select>
+            </div>
           </div>
 
           <div class="campo-comentario" style="margin-bottom: 1.2rem;">
@@ -325,7 +351,7 @@
 
           <button type="submit" class="btn-publicar-comentario">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            Publicar comentario
+            Publicar comentario en el muro
           </button>
         </form>
       </div>

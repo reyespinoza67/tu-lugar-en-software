@@ -165,10 +165,10 @@
       tags: ['voces', 'testimonios', 'egresados', 'docentes', 'experiencias']
     },
     {
-      titulo: 'Comentarios generales de la comunidad',
-      descripcion: 'Espacio de diálogo abierto para aspirantes y universitarios',
+      titulo: 'Muro unificado de comentarios',
+      descripcion: 'Espacio de diálogo abierto que reúne los comentarios del blog y la comunidad',
       url: 'comunidad.html#comentarios-generales',
-      tags: ['comentarios', 'comunidad', 'opiniones', 'dudas', 'preguntas', 'foro']
+      tags: ['comentarios', 'comunidad', 'opiniones', 'dudas', 'preguntas', 'foro', 'muro', 'blog']
     },
     {
       titulo: 'Equipo creador del sitio',
