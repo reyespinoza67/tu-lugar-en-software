@@ -69,13 +69,31 @@
    ===================================================== */
 (function marcarPaginaActiva() {
   const rutaActual = window.location.pathname.split('/').pop() || 'index.html';
+  const hashActual = window.location.hash;
   const enlaces = document.querySelectorAll('.nav-lista > li > a');
 
   enlaces.forEach(function (enlace) {
-    const rutaEnlace = enlace.getAttribute('href').split('#')[0].split('/').pop();
-    if (rutaEnlace === rutaActual) {
-      enlace.classList.add('activo');
-      enlace.setAttribute('aria-current', 'page');
+    const hrefCompleto = enlace.getAttribute('href');
+    const partes = hrefCompleto.split('#');
+    const rutaEnlace = partes[0].split('/').pop();
+    const hashEnlace = partes.length > 1 ? '#' + partes[1] : '';
+
+    if (hashEnlace) {
+      if (rutaEnlace === rutaActual && hashActual === hashEnlace) {
+        enlace.classList.add('activo');
+        enlace.setAttribute('aria-current', 'page');
+      } else {
+        enlace.classList.remove('activo');
+        enlace.removeAttribute('aria-current');
+      }
+    } else {
+      if (rutaEnlace === rutaActual && hashActual !== '#comentarios-generales') {
+        enlace.classList.add('activo');
+        enlace.setAttribute('aria-current', 'page');
+      } else {
+        enlace.classList.remove('activo');
+        enlace.removeAttribute('aria-current');
+      }
     }
   });
 })();

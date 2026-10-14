@@ -17,6 +17,15 @@
 
 <body>
 
+<!-- Barra de equipo ITSON -->
+  <div class="barra-equipo-top">
+    <div class="contenedor-barra-equipo">
+      <span class="badge-equipo-pill">Equipo 2</span>
+      <span class="equipo-institucion">Licenciatura en Ingeniería en Software — ITSON</span>
+      <span class="equipo-evaluacion">Sitio para evaluación colaborativa</span>
+    </div>
+  </div>
+
   <!-- HERO / CABECERA -->
   <header class="hero" role="banner">
     <div class="hero-grid">
@@ -35,6 +44,7 @@
       </div>
 
       <div class="hero-centro">
+        <div class="badge-equipo-hero">Equipo 2 — ITSON</div>
         <a href="index.html" class="logo-link-hero" aria-label="Ir a la página de inicio">
           <img src="img/logo.svg" alt="Logotipo Tu lugar en Software" width="64" height="64" style="margin: 0 auto 0.8rem auto; display: block;" />
         </a>
@@ -87,8 +97,10 @@
           <button type="button" class="btn-toggle-sub" aria-label="Desplegar submenú El ciclo de vida" aria-expanded="false">▾</button>
           <ul class="nav-submenu">
             <li><a href="ciclo-de-vida.html#que-es">Qué es</a></li>
+            <li><a href="ciclo-de-vida.html#curricular">Marco curricular</a></li>
             <li><a href="ciclo-de-vida.html#fases">Las 8 fases</a></li>
             <li><a href="ciclo-de-vida.html#ventajas-desventajas">Ventajas y desventajas</a></li>
+            <li><a href="ciclo-de-vida.html#conclusiones-roles">Conclusiones por rol</a></li>
             <li><a href="ciclo-de-vida.html#quiz-seccion">Quiz</a></li>
           </ul>
         </li>
@@ -105,6 +117,8 @@
             <li><a href="roles.html#tester">Tester</a></li>
             <li><a href="roles.html#arquitecto-programador">Arquitecto y programador</a></li>
             <li><a href="roles.html#lider">Líder de proyecto</a></li>
+            <li><a href="roles.html#disenador">Diseñador</a></li>
+            <li><a href="roles.html#integrador">Integrador</a></li>
           </ul>
         </li>
 
@@ -149,6 +163,16 @@
             <li><a href="comunidad.html#comentarios-generales">Comentarios generales</a></li>
             <li><a href="comunidad.html#equipo-desarrollo">Equipo creador</a></li>
           </ul>
+        </li>
+
+        <!-- Apartado directo para comentarios (evaluación ágil) -->
+        <li>
+          <a href="comunidad.html#comentarios-generales">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Comentarios
+          </a>
         </li>
       </ul>
 
@@ -291,6 +315,26 @@
             </p>
             <div style="background: var(--gris-suave); padding: 1rem; border-radius: var(--radio); font-size: 0.9rem; border: 1px solid var(--lila-claro);">
               <strong>Habilidades principales —</strong> Creatividad visual, accesibilidad web, prototipado y análisis de comportamiento de usuarios.
+            </div>
+          </article>
+
+          <!-- Rol 6: Integrador -->
+          <article class="rol-card reveal" id="integrador">
+            <img src="img/rol-integrador.jpg" alt="Integrador de sistemas y especialista en despliegues" class="rol-img-banner" loading="lazy" />
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+              <div class="icono-circulo ic-azul" style="width: 50px; height: 50px;" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <div>
+                <h2 style="font-size: 1.4rem; color: var(--azul-marino);">Integrador de sistemas</h2>
+                <span style="font-size: 0.85rem; color: var(--morado-profundo); font-weight: 600;">Materia clave ITSON — Integración de aplicaciones y arquitectura distribuida</span>
+              </div>
+            </div>
+            <p style="margin-bottom: 1rem;">
+              El integrador ensambla los distintos módulos desarrollados por el equipo, garantizando que servicios externos, bases de datos y tuberías de despliegue continuo operen en perfecta sincronía técnica.
+            </p>
+            <div style="background: var(--gris-suave); padding: 1rem; border-radius: var(--radio); font-size: 0.9rem; border: 1px solid var(--lila-claro);">
+              <strong>Habilidades principales —</strong> Integración continua, gestión de servidores en la nube, consumo de interfaces de programación y resolución de incompatibilidades.
             </div>
           </article>
 
