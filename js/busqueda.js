@@ -17,10 +17,10 @@
       tags: ['inicio', 'bienvenida', 'itson', 'software', 'carrera', 'presentacion']
     },
     {
-      titulo: 'Por qué estudiar Ingeniería en Software',
-      descripcion: 'Descubre las razones para elegir esta carrera apasionante y con gran futuro profesional',
+      titulo: 'Por qué no rendirte en Ingeniería en Software',
+      descripcion: 'Supera los semestres filtro, combate el síndrome del impostor y avanza con el apoyo de tu comunidad',
       url: 'index.html#tarjetas-destacadas',
-      tags: ['estudiar', 'por que', 'futuro', 'carrera', 'beneficios', 'oportunidades']
+      tags: ['estudiar', 'por que', 'resistencia', 'permanencia', 'no rendirse', 'carrera', 'superacion', 'itson']
     },
 
     /* El ciclo de vida */
@@ -109,10 +109,10 @@
 
     /* Entradas del Blog */
     {
-      titulo: 'ITSON y la carrera de Ingeniería en Software',
-      descripcion: 'Conoce por qué el Instituto Tecnológico de Sonora es la mejor opción para formarte',
+      titulo: 'Por qué perseverar en Ingeniería en Software en ITSON',
+      descripcion: 'Supera el impacto de los primeros semestres y descubre por qué resistir la dificultad académica vale la pena',
       url: 'blog.html#itson-carrera',
-      tags: ['itson', 'carrera', 'articulo', 'universidad', 'sonora', 'prestigio']
+      tags: ['itson', 'carrera', 'permanencia', 'resistencia', 'superacion', 'no desertar', 'bajas']
     },
     {
       titulo: 'Cómo nace una aplicación de software',
@@ -121,16 +121,16 @@
       tags: ['nace app', 'creacion', 'articulo', 'proceso', 'aplicaciones', 'movil']
     },
     {
-      titulo: 'Aprende semestre a semestre en ITSON',
-      descripcion: 'Guía práctica para aprovechar cada materia y proyecto durante tu estancia estudiantil',
+      titulo: 'Estrategias para superar las materias filtro semestre a semestre',
+      descripcion: 'Recomendaciones prácticas para no reprobar materias seriadas y gestionar tu carga académica',
       url: 'blog.html#aprende-semestre',
-      tags: ['aprende', 'consejos', 'estudiantes', 'guia', 'consejos estudiantiles']
+      tags: ['materias filtro', 'seriadas', 'consejos', 'estudiantes', 'supervivencia', 'aprobacion']
     },
     {
-      titulo: 'Mitos y realidades sobre aprender a programar',
-      descripcion: 'Desmontamos las creencias falsas sobre las matemáticas y el trabajo en el mundo del desarrollo',
+      titulo: 'Mitos que te hacen dudar de tu capacidad en software',
+      descripcion: 'Desmontamos el síndrome del impostor, el miedo a las matemáticas y la falsa idea de entender todo a la primera',
       url: 'blog.html#mitos-programacion',
-      tags: ['mitos', 'programar', 'matematicas', 'soledad', 'creatividad', 'aprender']
+      tags: ['mitos', 'impostor', 'dudas', 'frustracion', 'matematicas', 'capacidad', 'resiliencia']
     },
     {
       titulo: 'Frontend y Backend — Dos mundos que construyen una app',
@@ -139,10 +139,10 @@
       tags: ['frontend', 'backend', 'fullstack', 'servidores', 'css', 'javascript', 'interfaz']
     },
     {
-      titulo: 'Cómo prepararte para tu primer año de universidad',
-      descripcion: 'Estrategias de organización del tiempo y formación de equipos de estudio para triunfar en ITSON',
+      titulo: 'Cómo superar los primeros semestres y no darte de baja',
+      descripcion: 'Estrategias clave para enfrentar las semanas de exámenes, armar grupos de estudio y evitar la deserción',
       url: 'blog.html#primer-ano-universidad',
-      tags: ['primer ano', 'universidad', 'adaptacion', 'estudio', 'habitos', 'itson']
+      tags: ['primer ano', 'desercion', 'bajas', 'permanencia', 'estudio', 'itson', 'apoyo mutuo']
     },
     {
       titulo: 'El papel de la Inteligencia Artificial en el software',
